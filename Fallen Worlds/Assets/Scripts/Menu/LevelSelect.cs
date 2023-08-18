@@ -6,8 +6,7 @@ public class LevelSelect : MonoBehaviour
 {
     public TMPro.TMP_Dropdown levelSelect;
 
-    public string MagicalForrest;
-    public string ForgottenForrest;
+    public string levelName;
 
     private PlayerInfoManager playerInfo;
 
@@ -17,13 +16,11 @@ public class LevelSelect : MonoBehaviour
     }
     public void StartLevel()
     {
-        if (levelSelect.options[levelSelect.value].text == "Magical Forrest")
+        levelName = levelSelect.options[levelSelect.value].text;
+
+        if (levelSelect.options[levelSelect.value].text == levelName)
         {
-            SceneManager.LoadScene(MagicalForrest);
-        }
-        if (levelSelect.options[levelSelect.value].text == "Forgotten Forrest")
-        {
-            SceneManager.LoadScene(ForgottenForrest);
+            SceneManager.LoadScene(levelName);
         }
 
 
