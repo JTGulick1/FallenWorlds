@@ -19,7 +19,7 @@ public class EnemyManager : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         meshAgent = GetComponent<NavMeshAgent>();
         health += gm.GetWaveNumber();
-        meshAgent.speed = (gm.GetWaveNumber() / 2) + 2.5f;
+        meshAgent.speed = (gm.GetWaveNumber() / 2) + 2.5f; //Ajust the enemy speed based off the waves
         if (meshAgent.speed <= 3.5f)
             meshAgent.speed = 3.5f;
         if (meshAgent.speed >= 16f)
@@ -28,10 +28,10 @@ public class EnemyManager : MonoBehaviour
 
     void Update()
     {
-        if (health <= 0)
+        if (health <= 0) // Check if its dead
         {
             int spawnitem = Random.Range(0, 100);
-            if (spawnitem == 69)
+            if (spawnitem == 38) // Spawn a Item
             {
                 SpawnItem();
             }
@@ -41,14 +41,14 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision) //when shot
     {
-        if (collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.tag == "Bullet") 
         {
             health -= collision.gameObject.GetComponent<Bullet>().damage;
         }
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //Attacking player
     {
         if (other.gameObject.tag == "Player")
         {
@@ -57,7 +57,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    private void SpawnItem()
+    private void SpawnItem() // If the enemy drops and item
     {
         SetItem spawnedItem;
         GameObject newItem = Instantiate(item, this.transform.position, this.transform.rotation);

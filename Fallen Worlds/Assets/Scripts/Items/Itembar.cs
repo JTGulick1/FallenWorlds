@@ -23,7 +23,7 @@ public class Itembar : MonoBehaviour
         playerInfoManager = PlayerInfoManager.Instance;
     }
 
-    public void GetItemDetails(Item item)
+    public void GetItemDetails(Item item) // Item info
     {
         currentItem = item;
         itemName.text = item.name;
@@ -36,7 +36,7 @@ public class Itembar : MonoBehaviour
         }
     }
 
-    public void Consume(int tick)
+    public void Consume(int tick) // Use Item
     {
         playerInfoManager.hydration += hydration;
         playerInfoManager.hunger += hunger;
@@ -61,7 +61,7 @@ public class Itembar : MonoBehaviour
         }
     }
 
-    public void MoveToBag()
+    public void MoveToBag() // when the game starts
     {
         if (playerInfoManager.backpack.Count < 20)
         {
@@ -74,7 +74,7 @@ public class Itembar : MonoBehaviour
         }
     }
 
-    public void MoveToInv()
+    public void MoveToInv() //when the game ends
     {
         if (playerInfoManager.backpack.Contains(currentItem))
         {
@@ -84,7 +84,7 @@ public class Itembar : MonoBehaviour
         inv.UpdateINV();
     }
 
-    public void DestroyObject(int tick)
+    public void DestroyObject(int tick) // Player removed the item from inv
     {
         if (playerInfoManager.inverntory.Contains(currentItem))
         {

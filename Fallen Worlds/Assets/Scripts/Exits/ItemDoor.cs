@@ -13,7 +13,7 @@ public class ItemDoor : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //if the player is close enough to the door spawn UI
     {
         if (other.gameObject.tag == "Player")
         {
@@ -21,7 +21,7 @@ public class ItemDoor : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other) //if the player is close enough to the door despawn UI
     {
         if (other.gameObject.tag == "Player")
         {

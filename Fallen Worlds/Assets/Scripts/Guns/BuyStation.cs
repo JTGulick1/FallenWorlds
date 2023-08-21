@@ -14,7 +14,7 @@ public class BuyStation : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //if the player is close enough to the wall buy spawn UI
     {
         if (other.gameObject.tag == "Player")
         {
@@ -22,7 +22,7 @@ public class BuyStation : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other) //if the player is close enough to the wall buy despawn UI
     {
         if (other.gameObject.tag == "Player")
         {

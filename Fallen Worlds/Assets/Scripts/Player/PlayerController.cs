@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController: MonoBehaviour
 {
+    //Simple movement script
+
     [SerializeField]
     private float playerSpeed = 6.0f;
     [SerializeField]
@@ -43,7 +45,7 @@ public class PlayerController: MonoBehaviour
             gameManager.KillPlayer();
         }
 
-        if (playersHealth != 30.0f)
+        if (playersHealth != 30.0f) // alert player of low health
         {
             timer += Time.deltaTime;
             if (timer >= regenTime){

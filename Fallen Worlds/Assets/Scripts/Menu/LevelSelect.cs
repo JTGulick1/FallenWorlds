@@ -14,7 +14,7 @@ public class LevelSelect : MonoBehaviour
     {
         playerInfo = PlayerInfoManager.Instance;
     }
-    public void StartLevel()
+    public void StartLevel() // when the player presses start lay the level that is selected
     {
         levelName = levelSelect.options[levelSelect.value].text;
 

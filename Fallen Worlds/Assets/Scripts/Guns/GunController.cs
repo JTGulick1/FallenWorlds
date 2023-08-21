@@ -26,22 +26,20 @@ public class GunController : MonoBehaviour
         inputManager.auto = primaryGun.fullAuto;
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         ammoInClipPrimary = primaryGun.magSize;
-        ammoInClipSecondary = secondaryGun.magSize;
         spareAmmoPrimary = primaryGun.spareBullets;
-        spareAmmoSecondary = secondaryGun.spareBullets;
         gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
     }
 
     void Update()
     {
-        if (inputManager.Fire() == true && ammoInClipPrimary != 0)
+        if (inputManager.Fire() == true && ammoInClipPrimary != 0) //fire gun logic
         {
             mostRecentBullet = Instantiate(bullet, shootFrom.transform.position, shootFrom.transform.rotation);
             ammoInClipPrimary--;
             gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
             mostRecentBullet.GetComponent<Bullet>().SetDamage(primaryGun.damage);
         }
-        if (Input.GetAxis("Mouse ScrollWheel") >= 0.1 || Input.GetAxis("Mouse ScrollWheel") <= -0.1)
+        if (Input.GetAxis("Mouse ScrollWheel") >= 0.1 || Input.GetAxis("Mouse ScrollWheel") <= -0.1) //Changing gun logic
         {
             tempGun = primaryGun;
             primaryGun = secondaryGun;
@@ -65,14 +63,14 @@ public class GunController : MonoBehaviour
         }
     }
 
-    public void BoughtWeopon(Guns gun)
+    public void BoughtWeopon(Guns gun) // when you buy a weopon replace the current one
     {
         primaryGun = gun;
         ammoInClipPrimary = gun.magSize;
         spareAmmoPrimary = gun.spareBullets;
     }
 
-    private void Reload()
+    private void Reload() // Reloading logic
     {
         if (ammoInClipPrimary == primaryGun.magSize)
         {
@@ -104,7 +102,7 @@ public class GunController : MonoBehaviour
         gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
     }
 
-    public void MaxAmmo()
+    public void MaxAmmo() // Power up?
     {
         ammoInClipPrimary = primaryGun.magSize;
         ammoInClipSecondary = secondaryGun.magSize;

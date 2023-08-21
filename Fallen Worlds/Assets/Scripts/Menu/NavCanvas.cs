@@ -25,7 +25,7 @@ public class NavCanvas : MonoBehaviour
         UpdateStats();
     }
 
-    public void UpdateStats()
+    public void UpdateStats() // update the players stats when needed
     {
         hydration.text = "Hydration: " + playerInfoManager.hydration;
         hunger.text = "Hunger: " + playerInfoManager.hunger;
@@ -33,6 +33,8 @@ public class NavCanvas : MonoBehaviour
         shards.text = "Shards: " + playerInfoManager.shards;
     }
 
+    // Functions that make the UI feel better
+    #region Extra Functions
     public void MenuOn()
     {
         menu.SetActive(true);
@@ -73,5 +75,5 @@ public class NavCanvas : MonoBehaviour
         crafting.SetActive(false);
         store.SetActive(true);
     }
-
+    #endregion
 }

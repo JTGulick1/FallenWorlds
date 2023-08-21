@@ -12,7 +12,7 @@ public class SetItem : MonoBehaviour
         backpack = GameObject.FindGameObjectWithTag("Player").GetComponent<Backpack>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // player picked up and item
     {
         if (other.gameObject.tag == "Player")
         {

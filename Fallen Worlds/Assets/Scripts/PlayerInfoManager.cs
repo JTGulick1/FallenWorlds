@@ -19,7 +19,7 @@ public class PlayerInfoManager : MonoBehaviour
     private GameManager gm;
 
     public bool inGameTick;
-    private bool HT = false; //hydration tick
+    private bool HT = false; //hydration tick checks if the player is in game or in lobby
     private bool ET = false; //sleep tick
     public float timer;
 

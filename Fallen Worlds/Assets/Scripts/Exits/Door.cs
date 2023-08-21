@@ -13,13 +13,13 @@ public class Door : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
-    private void OnTriggerEnter(Collider other){
+    private void OnTriggerEnter(Collider other){ //if the player is close enough to the door spawn UI
         if (other.gameObject.tag == "Player"){
             gm.CloseToDoor(this.gameObject, cost);
         }
     }
 
-    private void OnTriggerExit(Collider other){
+    private void OnTriggerExit(Collider other) { //if the player is close enough to the door despawn UI
         if (other.gameObject.tag == "Player"){
             gm.OutOfDoorRange();
         }

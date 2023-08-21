@@ -13,7 +13,7 @@ public class Portal : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //if the player is close enough to the portal spawn UI
     {
         if (other.gameObject.tag == "Player")
         {
@@ -21,7 +21,7 @@ public class Portal : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other) //if the player is close enough to the portal despawn UI
     {
         if (other.gameObject.tag == "Player")
         {
