@@ -16,4 +16,8 @@ MonoBehaviour:
   magSize: 30
   spareBullets: 300
   bulllet: {fileID: 0}
+  fireRate: 0.1
+  falloff: 1
   fullAuto: 1
+  tBurst: 0
+  fBurst: 0

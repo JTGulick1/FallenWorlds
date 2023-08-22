@@ -10,6 +10,7 @@ public class GunController : MonoBehaviour
     private InputManager inputManager;
     public Transform shootFrom;
     public GameObject bullet;
+    public ParticleSystem gunflare;
     private GameObject mostRecentBullet;
     private GameManager gm;
 
@@ -19,6 +20,10 @@ public class GunController : MonoBehaviour
     private int spareAmmoSecondary;
     private int tempAmmo;
     private int tempSpare;
+
+    private float timer = 0.0f;
+    private float cooldown = 0.0f;
+    private int bulletTick;
 
     void Start()
     {
@@ -32,12 +37,11 @@ public class GunController : MonoBehaviour
 
     void Update()
     {
-        if (inputManager.Fire() == true && ammoInClipPrimary != 0) //fire gun logic
+        timer += Time.deltaTime;
+        cooldown += Time.deltaTime;
+        if (inputManager.Fire() == true && ammoInClipPrimary != 0 && timer > primaryGun.fireRate && cooldown > primaryGun.burstCooldown)
         {
-            mostRecentBullet = Instantiate(bullet, shootFrom.transform.position, shootFrom.transform.rotation);
-            ammoInClipPrimary--;
-            gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
-            mostRecentBullet.GetComponent<Bullet>().SetDamage(primaryGun.damage);
+            FireGun();
         }
         if (Input.GetAxis("Mouse ScrollWheel") >= 0.1 || Input.GetAxis("Mouse ScrollWheel") <= -0.1) //Changing gun logic
         {
@@ -109,5 +113,53 @@ public class GunController : MonoBehaviour
         spareAmmoPrimary = primaryGun.spareBullets;
         spareAmmoSecondary = secondaryGun.spareBullets;
         gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
+    }
+
+    public void FireGun()
+    {
+        if (primaryGun.tBurst != true && primaryGun.fBurst != true)
+        {
+            gunflare.Play();
+            mostRecentBullet = Instantiate(bullet, shootFrom.transform.position, shootFrom.transform.rotation);
+            mostRecentBullet.GetComponent<Bullet>().falloff = primaryGun.falloff;
+            ammoInClipPrimary--;
+            gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
+            mostRecentBullet.GetComponent<Bullet>().SetDamage(primaryGun.damage);
+            timer = 0.0f;
+            return;
+        }
+        if (primaryGun.tBurst == true && cooldown > primaryGun.burstCooldown)
+        {
+            gunflare.Play();
+            mostRecentBullet = Instantiate(bullet, shootFrom.transform.position, shootFrom.transform.rotation);
+            mostRecentBullet.GetComponent<Bullet>().falloff = primaryGun.falloff;
+            ammoInClipPrimary--;
+            gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
+            mostRecentBullet.GetComponent<Bullet>().SetDamage(primaryGun.damage);
+            timer = 0.0f;
+            bulletTick++;
+            if (bulletTick > 2)
+            {
+                cooldown = 0.0f;
+                bulletTick = 0;
+            }
+            return;
+        }
+        if (primaryGun.fBurst == true && cooldown > primaryGun.burstCooldown)
+        {
+            gunflare.Play();
+            mostRecentBullet = Instantiate(bullet, shootFrom.transform.position, shootFrom.transform.rotation);
+            mostRecentBullet.GetComponent<Bullet>().falloff = primaryGun.falloff;
+            ammoInClipPrimary--;
+            gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
+            mostRecentBullet.GetComponent<Bullet>().SetDamage(primaryGun.damage);
+            timer = 0.0f;
+            bulletTick++;
+            if (bulletTick > 3)
+            {
+                cooldown = 0.0f;
+            }
+            return;
+        }
     }
 }

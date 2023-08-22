@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   damage: 30
+  falloff: 0.1
   magSize: 7
   spareBullets: 61
   bulllet: {fileID: 0}
   fullAuto: 0
+  tBurst: 0
+  fBurst: 0

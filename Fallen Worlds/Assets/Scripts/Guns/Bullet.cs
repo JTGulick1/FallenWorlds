@@ -8,11 +8,12 @@ public class Bullet : MonoBehaviour
     private float speed = 50.0f;
     public float damage;
     private Rigidbody rb;
+    public float falloff;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Destroy(this.gameObject, 5.0f);
+        Destroy(this.gameObject, falloff);
     }
 
     void Update()

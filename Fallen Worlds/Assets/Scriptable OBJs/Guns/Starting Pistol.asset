@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Starting Pistol
   m_EditorClassIdentifier: 
   damage: 15
+  falloff: 3
   magSize: 12
   spareBullets: 64
   bulllet: {fileID: 8287771000947808528, guid: ffdbe6f9e75958147b45c27de58e39ed, type: 3}
   fullAuto: 0
+  tBurst: 0
+  fBurst: 0
