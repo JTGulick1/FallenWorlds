@@ -23,6 +23,18 @@ public class PlayerInfoManager : MonoBehaviour
     private bool ET = false; //sleep tick
     public float timer;
 
+    [Header("Office Stats")]
+    public int officeLevel = 0;
+    public int deskLevel = 1;
+    public int fileLevel = 1;
+    public int weoponsLevel = 1;
+    public int backpackLevel = 1;
+    public int bedLevel = 1;
+    public int waterFillerLevel = 1;
+    public int foodSupplyLevel = 1;
+    public int portalLevel = 1;
+
+
     private static PlayerInfoManager _instance;
 
     public static PlayerInfoManager Instance
@@ -60,7 +72,7 @@ public class PlayerInfoManager : MonoBehaviour
                 hydration--;
                 HT = true;
             }
-            if (timer >= 60.0f && ET == false)
+            if (timer >= 60.0f - (bedLevel - 1) && ET == false)
             {
                 sleep--;
                 ET = true;

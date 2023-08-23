@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (isclosetoportal == true && int.Parse(pointstxt.text) >= portalCost && inputManager.Interacted() == true)
+        if (isclosetoportal == true && int.Parse(pointstxt.text) >= portalCost - ((playerInfoManager.portalLevel - 1) * 100) && inputManager.Interacted() == true)
         {
             doortxt.gameObject.SetActive(true);
             RemovePoints(portalCost);

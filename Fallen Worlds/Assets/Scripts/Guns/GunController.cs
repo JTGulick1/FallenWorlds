@@ -13,6 +13,7 @@ public class GunController : MonoBehaviour
     public ParticleSystem gunflare;
     private GameObject mostRecentBullet;
     private GameManager gm;
+    private PlayerInfoManager playerInfoManager;
 
     private int ammoInClipPrimary;
     private int spareAmmoPrimary;
@@ -27,11 +28,12 @@ public class GunController : MonoBehaviour
 
     void Start()
     {
+        playerInfoManager = PlayerInfoManager.Instance;
         inputManager = InputManager.Instance;
         inputManager.auto = primaryGun.fullAuto;
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         ammoInClipPrimary = primaryGun.magSize;
-        spareAmmoPrimary = primaryGun.spareBullets;
+        spareAmmoPrimary = primaryGun.spareBullets + (playerInfoManager.weoponsLevel - 1) * (ammoInClipPrimary / 4);
         gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
     }
 

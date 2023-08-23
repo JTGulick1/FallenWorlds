@@ -63,7 +63,7 @@ public class Itembar : MonoBehaviour
 
     public void MoveToBag() // when the game starts
     {
-        if (playerInfoManager.backpack.Count < 20)
+        if (playerInfoManager.backpack.Count < 20 + (playerInfoManager.backpackLevel - 1))
         {
             if (playerInfoManager.inverntory.Contains(currentItem))
             {

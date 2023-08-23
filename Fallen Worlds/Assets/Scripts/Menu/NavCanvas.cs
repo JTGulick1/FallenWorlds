@@ -33,6 +33,23 @@ public class NavCanvas : MonoBehaviour
         shards.text = "Shards: " + playerInfoManager.shards;
     }
 
+    public void DrinkWater()
+    {
+        if (playerInfoManager.shards >= 15 - (playerInfoManager.waterFillerLevel - 1))
+        {
+            playerInfoManager.shards -= 15;
+            playerInfoManager.hydration += 15;
+        }
+    }
+    public void EatFood()
+    {
+        if (playerInfoManager.shards >= 15 - (playerInfoManager.foodSupplyLevel - 1))
+        {
+            playerInfoManager.shards -= 15;
+            playerInfoManager.hunger += 15;
+        }
+    }
+
     // Functions that make the UI feel better
     #region Extra Functions
     public void MenuOn()

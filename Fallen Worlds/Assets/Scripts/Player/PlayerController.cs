@@ -28,10 +28,11 @@ public class PlayerController: MonoBehaviour
     private InputManager inputManager;
     private Transform camTransform;
     private GameManager gameManager;
-
+    private PlayerInfoManager playerInfoManager;
 
     private void Start()
     {
+        playerInfoManager = PlayerInfoManager.Instance;
         controller = GetComponent<CharacterController>();
         inputManager = InputManager.Instance;
         camTransform = Camera.main.transform;
@@ -48,7 +49,7 @@ public class PlayerController: MonoBehaviour
         if (playersHealth != 30.0f) // alert player of low health
         {
             timer += Time.deltaTime;
-            if (timer >= regenTime){
+            if (timer >= regenTime - ((playerInfoManager.deskLevel - 1) / 4)){
                 playersHealth += 0.1f;
                 if (playersHealth >= 30.0f){
                     playersHealth = 30.0f;
@@ -65,7 +66,7 @@ public class PlayerController: MonoBehaviour
         Vector3 move = new Vector3(movement.x, 0f, movement.y);
         move = camTransform.forward * move.z + camTransform.right * move.x;
         move.y = 0f;
-        controller.Move(move * Time.deltaTime * playerSpeed);
+        controller.Move(move * Time.deltaTime * (playerSpeed + ((playerInfoManager.fileLevel - 1) / 4)));
 
         // Changes the height position of the player..
         if (inputManager.Jumped() && groundedPlayer){
