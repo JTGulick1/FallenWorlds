@@ -15,6 +15,7 @@ TagManager:
   - SpareTXT
   - PlayerInfoManager
   - InvCanvas
+  - BleedingOutIMG
   layers:
   - Default
   - TransparentFX

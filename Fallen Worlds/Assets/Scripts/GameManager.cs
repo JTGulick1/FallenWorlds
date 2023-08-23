@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     private int portalCost;
     private GameObject endScreen;
 
-    //Enemy
+    [Header("Enemy Info")]
     public List<GameObject> spawners = new List<GameObject>();
     public GameObject baseEnemy;
 
@@ -40,16 +40,18 @@ public class GameManager : MonoBehaviour
     public int enemysOnFeild = -1;
 
     private Text wavenumTXT;
+    public Image bleedingOut;
 
-    //Items
+    [Header("Items")]
     public List<Item> items = new List<Item>();
     public Item item;
     private Backpack backpack;
 
+    [Header("Guns")]
     private Text clipAmmo;
     private Text spareAmmo;
 
-    //End Game
+    [Header("End Game")]
     private PlayerInfoManager playerInfoManager;
     private bool playerIsNoMore = false;
     private float backtoLobby = 0.0f;
@@ -255,7 +257,14 @@ public class GameManager : MonoBehaviour
 
     public void Dying()
     {
-        //Start to black out
+        //Sound effect of dying
+        bleedingOut.gameObject.SetActive(true);
+    }
+
+    public void HealedUp()
+    {
+        //Sound effect of catching your breath
+        bleedingOut.gameObject.SetActive(false);
     }
 
     public void KillPlayer()

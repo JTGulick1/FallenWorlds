@@ -1551,6 +1551,18 @@ Transform:
   m_Father: {fileID: 1864412755}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1825528716 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1825528716, guid: 64b06f6dcea1373408934240e29d966e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8968934669240124307}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1855086667
 GameObject:
   m_ObjectHideFlags: 0
@@ -2188,6 +2200,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 173705582172475685, guid: 8798772d1ca51134d93df2896eface37,
+        type: 3}
+      propertyPath: primaryGun
+      value: 
+      objectReference: {fileID: 11400000, guid: 46113107f2239984dbb71a1fcff310b0,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8798772d1ca51134d93df2896eface37, type: 3}
 --- !u!1001 &429527395777823189
@@ -2432,6 +2450,88 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8778841870556014092, guid: 0bc6db18d7d6dd747a896495a9e40f80,
+        type: 3}
+      propertyPath: bleedingOut
+      value: 
+      objectReference: {fileID: 1825528716}
+    - target: {fileID: 8778841870556014092, guid: 0bc6db18d7d6dd747a896495a9e40f80,
+        type: 3}
+      propertyPath: items.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778841870556014092, guid: 0bc6db18d7d6dd747a896495a9e40f80,
+        type: 3}
+      propertyPath: items.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b769ce5af7df0c47adcb694b7c9b32b,
+        type: 2}
+    - target: {fileID: 8778841870556014092, guid: 0bc6db18d7d6dd747a896495a9e40f80,
+        type: 3}
+      propertyPath: items.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: a48c0f8911009684c8df409f74c4851b,
+        type: 2}
+    - target: {fileID: 8778841870556014092, guid: 0bc6db18d7d6dd747a896495a9e40f80,
+        type: 3}
+      propertyPath: items.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1833dfe460a80634099560aaf9596ec8,
+        type: 2}
+    - target: {fileID: 8778841870556014092, guid: 0bc6db18d7d6dd747a896495a9e40f80,
+        type: 3}
+      propertyPath: items.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: caf86c9bd55ad9045b74553a27bbace9,
+        type: 2}
+    - target: {fileID: 8778841870556014092, guid: 0bc6db18d7d6dd747a896495a9e40f80,
+        type: 3}
+      propertyPath: items.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 84bc5d82b5960f64e8d718c81b55eafd,
+        type: 2}
+    - target: {fileID: 8778841870556014092, guid: 0bc6db18d7d6dd747a896495a9e40f80,
+        type: 3}
+      propertyPath: items.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 98ea3a7e846789a4599737bef6c102ed,
+        type: 2}
+    - target: {fileID: 8778841870556014092, guid: 0bc6db18d7d6dd747a896495a9e40f80,
+        type: 3}
+      propertyPath: items.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: d272183d820dd764898e7d490efae714,
+        type: 2}
+    - target: {fileID: 8778841870556014092, guid: 0bc6db18d7d6dd747a896495a9e40f80,
+        type: 3}
+      propertyPath: items.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: e9f1f722f23b78e4aadc06a6d79cca46,
+        type: 2}
+    - target: {fileID: 8778841870556014092, guid: 0bc6db18d7d6dd747a896495a9e40f80,
+        type: 3}
+      propertyPath: items.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d76a581ce49c2247a1940b1dfb3c7ce,
+        type: 2}
+    - target: {fileID: 8778841870556014092, guid: 0bc6db18d7d6dd747a896495a9e40f80,
+        type: 3}
+      propertyPath: items.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: b86b3237cc2e6da44bc7fd2536d0c92a,
+        type: 2}
+    - target: {fileID: 8778841870556014092, guid: 0bc6db18d7d6dd747a896495a9e40f80,
+        type: 3}
+      propertyPath: items.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b28c36c2b57ea34eab3aec3a4b010c9,
+        type: 2}
+    - target: {fileID: 8778841870556014092, guid: 0bc6db18d7d6dd747a896495a9e40f80,
+        type: 3}
+      propertyPath: items.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: b29088decb05bb844bc0907d5a05813b,
+        type: 2}
     - target: {fileID: 8778841870556014093, guid: 0bc6db18d7d6dd747a896495a9e40f80,
         type: 3}
       propertyPath: m_RootOrder

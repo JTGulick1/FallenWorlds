@@ -48,6 +48,7 @@ public class PlayerController: MonoBehaviour
 
         if (playersHealth != 30.0f) // alert player of low health
         {
+            gameManager.HealedUp();
             timer += Time.deltaTime;
             if (timer >= regenTime - ((playerInfoManager.deskLevel - 1) / 4)){
                 playersHealth += 0.1f;
@@ -55,6 +56,11 @@ public class PlayerController: MonoBehaviour
                     playersHealth = 30.0f;
                 }
             }
+        }
+
+        if (playersHealth <= 11.0f)
+        {
+            gameManager.Dying();
         }
 
         groundedPlayer = controller.isGrounded;

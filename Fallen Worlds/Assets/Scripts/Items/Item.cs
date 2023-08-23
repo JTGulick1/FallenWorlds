@@ -9,7 +9,7 @@ public class Item : ScriptableObject
     {
         Consumable,
         Craftable,
-        Key
+        Key,
     }
     public ItemType itemType;
 

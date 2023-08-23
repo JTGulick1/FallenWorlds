@@ -160,6 +160,7 @@ public class GunController : MonoBehaviour
             if (bulletTick > 3)
             {
                 cooldown = 0.0f;
+                bulletTick = 0;
             }
             return;
         }

@@ -48,6 +48,7 @@ MonoBehaviour:
   baseEnemy: {fileID: 2479331147400074373, guid: aecfe8e09fc26b24ebf610c91c53e9ba,
     type: 3}
   enemysOnFeild: 0
+  bleedingOut: {fileID: 0}
   items:
   - {fileID: 11400000, guid: 98ea3a7e846789a4599737bef6c102ed, type: 2}
   - {fileID: 11400000, guid: 3b769ce5af7df0c47adcb694b7c9b32b, type: 2}
