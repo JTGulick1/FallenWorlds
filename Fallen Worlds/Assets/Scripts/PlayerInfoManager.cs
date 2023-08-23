@@ -125,7 +125,7 @@ public class PlayerInfoManager : MonoBehaviour
     {
         foreach (Item item in items)
         {
-            inverntory.Add(item);
+            backpack.Add(item);
         }
     }
 

@@ -26,6 +26,13 @@ public class InvCanvas : MonoBehaviour
             inventoryGos.Add(currentItem);
             currentItem.GetComponent<Itembar>().GetItemDetails(item);
         }
+        foreach (Item item in playerInfoManager.backpack)
+        {
+            GameObject currentItem;
+            currentItem = Instantiate(itemBarBp, itemBarBp.transform.position, itemBarBp.transform.rotation, bp.transform);
+            inventoryGos.Add(currentItem);
+            currentItem.GetComponent<Itembar>().GetItemDetails(item);
+        }
     }
 
     public void UpdateINV()
