@@ -61,4 +61,14 @@ public class InvCanvas : MonoBehaviour
             currentItem.GetComponent<Itembar>().GetItemDetails(item1);
         }
     }
+
+    public void MoveAllItems()
+    {
+        foreach (Item item in playerInfoManager.backpack)
+        {
+            playerInfoManager.inverntory.Add(item);
+        }
+        playerInfoManager.backpack.RemoveAll(item => item);
+        UpdateINV();
+    }
 }
