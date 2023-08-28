@@ -13,6 +13,15 @@ public class Item : ScriptableObject
     }
     public ItemType itemType;
 
+    public enum ItemRarity
+    {
+        Common,
+        Rare,
+        Epic,
+        Legendary
+    }
+    public ItemRarity rarity;
+
     public int hydration;
     public int hunger;
     public int energy;

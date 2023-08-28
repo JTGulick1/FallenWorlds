@@ -16,6 +16,7 @@ TagManager:
   - PlayerInfoManager
   - InvCanvas
   - BleedingOutIMG
+  - CraftingCanvas
   layers:
   - Default
   - TransparentFX

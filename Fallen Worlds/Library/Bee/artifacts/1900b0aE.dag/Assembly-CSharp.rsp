@@ -387,6 +387,7 @@
 "Assets/Scripts/Items/Item.cs"
 "Assets/Scripts/Items/Itembar.cs"
 "Assets/Scripts/Items/SetItem.cs"
+"Assets/Scripts/Items/SmeltBar.cs"
 "Assets/Scripts/Menu/CraftingCanvas.cs"
 "Assets/Scripts/Menu/InvCanvas.cs"
 "Assets/Scripts/Menu/LevelSelect.cs"
