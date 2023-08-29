@@ -11,6 +11,8 @@ public class SmeltBar : MonoBehaviour
     public Item currentItem;
     private CraftingCanvas craft;
 
+    public int slotNumber = 0;
+
     private void Start()
     {
         craft = GameObject.FindGameObjectWithTag("CraftingCanvas").GetComponent<CraftingCanvas>();
@@ -56,8 +58,8 @@ public class SmeltBar : MonoBehaviour
             if (playerInfoManager.inverntory.Contains(currentItem))
             {
                 craft.SpawnSmelter(1 , currentItem);
-                craft.slot1 = currentItem;
                 playerInfoManager.inverntory.Remove(currentItem);
+                craft.UpdateCraftINV();
             }
             return;
         }
@@ -66,8 +68,8 @@ public class SmeltBar : MonoBehaviour
             if (playerInfoManager.inverntory.Contains(currentItem))
             {
                 craft.SpawnSmelter(2, currentItem);
-                craft.slot1 = currentItem;
                 playerInfoManager.inverntory.Remove(currentItem);
+                craft.UpdateCraftINV();
             }
             return;
         }
@@ -76,10 +78,38 @@ public class SmeltBar : MonoBehaviour
             if (playerInfoManager.inverntory.Contains(currentItem))
             {
                 craft.SpawnSmelter(3, currentItem);
-                craft.slot1 = currentItem;
                 playerInfoManager.inverntory.Remove(currentItem);
+                craft.UpdateCraftINV();
             }
             return;
+        }
+    }
+
+    public void MoveBackToInv()
+    {
+        if (slotNumber == 1)
+        {
+            playerInfoManager.inverntory.Add(currentItem);
+            craft.UpdateCraftINV();
+            Destroy(craft.slot1);
+        }
+        if (slotNumber == 2)
+        {
+            playerInfoManager.inverntory.Add(currentItem);
+            craft.UpdateCraftINV();
+            Destroy(craft.slot2);
+        }
+        if (slotNumber == 3)
+        {
+            playerInfoManager.inverntory.Add(currentItem);
+            craft.UpdateCraftINV();
+            Destroy(craft.slot3);
+        }
+        if (slotNumber == 4)
+        {
+            playerInfoManager.inverntory.Add(currentItem);
+            craft.UpdateCraftINV();
+            Destroy(craft.craftedSlot);
         }
     }
 

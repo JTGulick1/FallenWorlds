@@ -21,7 +21,6 @@ public class Itembar : MonoBehaviour
     private void Start()
     {
         inv = GameObject.FindGameObjectWithTag("InvCanvas").GetComponent<InvCanvas>();
-        craft = GameObject.FindGameObjectWithTag("CraftingCanvas").GetComponent<CraftingCanvas>();
         playerInfoManager = PlayerInfoManager.Instance;
     }
 
@@ -99,37 +98,6 @@ public class Itembar : MonoBehaviour
             playerInfoManager.backpack.Remove(currentItem);
             inv.UpdateINV();
             return;
-        }
-    }
-
-    public void MoveToSlot()
-    {
-        if (craft.slot1 != null)
-        {
-            if (playerInfoManager.backpack.Contains(currentItem))
-            {
-                craft.SpawnSmelter(1 , currentItem);
-                craft.slot1 = currentItem;
-                playerInfoManager.inverntory.Remove(currentItem);
-            }
-        }
-        if (craft.slot2 != null)
-        {
-            if (playerInfoManager.backpack.Contains(currentItem))
-            {
-                craft.SpawnSmelter(2, currentItem);
-                craft.slot1 = currentItem;
-                playerInfoManager.inverntory.Remove(currentItem);
-            }
-        }
-        if (craft.slot3 != null)
-        {
-            if (playerInfoManager.backpack.Contains(currentItem))
-            {
-                craft.SpawnSmelter(3, currentItem);
-                craft.slot1 = currentItem;
-                playerInfoManager.inverntory.Remove(currentItem);
-            }
         }
     }
 

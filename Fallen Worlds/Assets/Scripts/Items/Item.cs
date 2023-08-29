@@ -15,7 +15,9 @@ public class Item : ScriptableObject
 
     public enum ItemRarity
     {
+        Basic,
         Common,
+        Uncommon,
         Rare,
         Epic,
         Legendary
