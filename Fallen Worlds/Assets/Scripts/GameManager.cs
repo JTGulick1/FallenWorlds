@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     private int waveNumber = 1;
     private int spawnNumber = 7;
     public int enemysOnFeild = -1;
+    public int leftOver = 0;
 
     private Text wavenumTXT;
     public Image bleedingOut;
@@ -128,7 +129,7 @@ public class GameManager : MonoBehaviour
             {
                 waveNumber++;
                 wavenumTXT.text = waveNumber.ToString();
-                spawnNumber += 7;
+                spawnNumber += (7 +(3 * waveNumber));
                 SpawnWave();
                 spawntimer = 0.0f;
             }
@@ -153,13 +154,46 @@ public class GameManager : MonoBehaviour
     #region Helper Functions
     public void SpawnWave()
     {
-        enemysOnFeild = spawnNumber;
-        for (int i = 0; i < spawnNumber; i++)
+        if (spawnNumber >= 33) // max number of bad guys at one time
         {
-            int seedNumber = Random.Range(0, spawners.Count);
-            spawners[seedNumber].GetComponent<SpawnEnemy>().Spawn(baseEnemy);
+            leftOver = spawnNumber - 33;
+            enemysOnFeild = spawnNumber;
+            while (spawnNumber != 0)
+            {
+                for (int i = 0; i < spawners.Count; i++)
+                {
+                    if (spawnNumber != 0)
+                    {
+                        spawners[i].GetComponent<SpawnEnemy>().Spawn(baseEnemy);
+                        spawnNumber--;
+                    }
+                }
+            }
         }
+        if (spawnNumber <= 33)
+        {
+            enemysOnFeild = spawnNumber;
+            while (spawnNumber != 0)
+            {
+                for (int i = 0; i < spawners.Count; i++)
+                {
+                    if (spawnNumber != 0)
+                    {
+                        spawners[i].GetComponent<SpawnEnemy>().Spawn(baseEnemy);
+                        spawnNumber--;
+                    }
+                }
+            }
+        }
+        leftOver = 0;
     }
+
+    public void SpawnLeftOvers()
+    {
+        int randomSpawner = Random.Range(0, spawners.Count);
+        spawners[randomSpawner].GetComponent<SpawnEnemy>().Spawn(baseEnemy);
+    }
+
     public void AddPoints(int pts)
     {
         pts += int.Parse(pointstxt.text);
