@@ -29,6 +29,7 @@ public class PlayerController: MonoBehaviour
     private Transform camTransform;
     private GameManager gameManager;
     private PlayerInfoManager playerInfoManager;
+    public GameObject inventory;
 
     private void Start()
     {
@@ -37,6 +38,8 @@ public class PlayerController: MonoBehaviour
         inputManager = InputManager.Instance;
         camTransform = Camera.main.transform;
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        inventory = GameObject.FindGameObjectWithTag("inGameInv");
+        inventory.SetActive(false);
     }
 
     void Update()
@@ -83,6 +86,19 @@ public class PlayerController: MonoBehaviour
             playerSpeed = 12.0f;
         }else{
             playerSpeed = playerBaseSpeed;
+        }
+        if (inputManager.OpenInventory() == true) // Open inventory if the player pressed tab
+        {
+            if (inventory.activeSelf == true)
+            {
+                inventory.SetActive(false);
+                return;
+            }
+            if (inventory.activeSelf == false)
+            {
+                inventory.SetActive(true);
+                return;
+            }
         }
 
         playerVelocity.y += gravityValue * Time.deltaTime;

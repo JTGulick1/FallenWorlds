@@ -75,4 +75,9 @@ public class InputManager : MonoBehaviour
     {
         return inputActions.MouseKeyboard.Interact.triggered;
     }
+
+    public bool OpenInventory()
+    {
+        return inputActions.MouseKeyboard.OpenInventory.triggered;
+    }
 }

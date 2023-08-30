@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc167f7455693f43be4fa62ac6fc980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalToSpawn: 0
 --- !u!4 &61552772
 Transform:
   m_ObjectHideFlags: 0
@@ -196,6 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc167f7455693f43be4fa62ac6fc980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalToSpawn: 0
 --- !u!4 &92175326
 Transform:
   m_ObjectHideFlags: 0
@@ -531,6 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc167f7455693f43be4fa62ac6fc980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalToSpawn: 0
 --- !u!4 &401437230
 Transform:
   m_ObjectHideFlags: 0
@@ -884,6 +887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc167f7455693f43be4fa62ac6fc980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalToSpawn: 0
 --- !u!4 &666255486
 Transform:
   m_ObjectHideFlags: 0
@@ -2601,6 +2605,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 584219417, guid: 64b06f6dcea1373408934240e29d966e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 323135239676587200, guid: 64b06f6dcea1373408934240e29d966e,
         type: 3}
       propertyPath: m_Name

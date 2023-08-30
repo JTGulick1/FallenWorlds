@@ -89,6 +89,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""ace0ed08-77c3-44ec-a490-61bbba9307f2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -212,6 +221,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""788e5828-93f0-4570-8ac0-0541672226c7"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,6 +247,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_MouseKeyboard_FireWeopon = m_MouseKeyboard.FindAction("FireWeopon", throwIfNotFound: true);
         m_MouseKeyboard_Interact = m_MouseKeyboard.FindAction("Interact", throwIfNotFound: true);
         m_MouseKeyboard_Reload = m_MouseKeyboard.FindAction("Reload", throwIfNotFound: true);
+        m_MouseKeyboard_OpenInventory = m_MouseKeyboard.FindAction("OpenInventory", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +314,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_MouseKeyboard_FireWeopon;
     private readonly InputAction m_MouseKeyboard_Interact;
     private readonly InputAction m_MouseKeyboard_Reload;
+    private readonly InputAction m_MouseKeyboard_OpenInventory;
     public struct MouseKeyboardActions
     {
         private @PlayerControls m_Wrapper;
@@ -304,6 +326,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @FireWeopon => m_Wrapper.m_MouseKeyboard_FireWeopon;
         public InputAction @Interact => m_Wrapper.m_MouseKeyboard_Interact;
         public InputAction @Reload => m_Wrapper.m_MouseKeyboard_Reload;
+        public InputAction @OpenInventory => m_Wrapper.m_MouseKeyboard_OpenInventory;
         public InputActionMap Get() { return m_Wrapper.m_MouseKeyboard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -334,6 +357,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Reload.started -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnReload;
                 @Reload.performed -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnReload;
                 @Reload.canceled -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnReload;
+                @OpenInventory.started -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnOpenInventory;
+                @OpenInventory.performed -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnOpenInventory;
+                @OpenInventory.canceled -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnOpenInventory;
             }
             m_Wrapper.m_MouseKeyboardActionsCallbackInterface = instance;
             if (instance != null)
@@ -359,6 +385,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Reload.started += instance.OnReload;
                 @Reload.performed += instance.OnReload;
                 @Reload.canceled += instance.OnReload;
+                @OpenInventory.started += instance.OnOpenInventory;
+                @OpenInventory.performed += instance.OnOpenInventory;
+                @OpenInventory.canceled += instance.OnOpenInventory;
             }
         }
     }
@@ -372,5 +401,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnFireWeopon(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
+        void OnOpenInventory(InputAction.CallbackContext context);
     }
 }

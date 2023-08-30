@@ -8,18 +8,23 @@ public class Backpack : MonoBehaviour
 
     public List<Item> items = new List<Item>();
 
+    private InGameInv inGamebp;
+
     public int cap = 20;
 
     private void Start()
     {
         playerInfoManager = PlayerInfoManager.Instance;
+        inGamebp = GameObject.FindGameObjectWithTag("inGameInv").GetComponent<InGameInv>();
         playerInfoManager.MoveToInGameBackPack(items);
+        inGamebp.UpdateINV();
     }
     public void AddItem(Item item)
     {
         if (items.Count != 20)
         {
             items.Add(item);
+            inGamebp.UpdateINV();
         }
     }
 
