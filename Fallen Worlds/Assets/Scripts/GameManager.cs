@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private bool isclosetoitemdoor = false;
     private GameObject closestdoor;
     private int doorCost;
+    private bool forShards;
 
     //Wall Buy Info
     private Guns tempWeopon;
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        playerInfoManager = PlayerInfoManager.Instance;
         pointstxt = GameObject.FindGameObjectWithTag("PlayersPoints").GetComponent<Text>();
         doortxt = GameObject.FindGameObjectWithTag("DoorTXT").GetComponent<Text>();
         gunController = GameObject.FindGameObjectWithTag("Player").GetComponent<GunController>();
@@ -68,7 +70,6 @@ public class GameManager : MonoBehaviour
         backpack = GameObject.FindGameObjectWithTag("Player").GetComponent<Backpack>();
         clipAmmo = GameObject.FindGameObjectWithTag("ClipTXT").GetComponent<Text>();
         spareAmmo = GameObject.FindGameObjectWithTag("SpareTXT").GetComponent<Text>();
-        playerInfoManager = GameObject.FindGameObjectWithTag("PlayerInfoManager").GetComponent<PlayerInfoManager>();
         playerInfoManager.FindGameManager();
         doortxt.gameObject.SetActive(false);
         endScreen.SetActive(false);
@@ -90,9 +91,15 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (isclosetodoor == true && int.Parse(pointstxt.text) >= doorCost && inputManager.Interacted() == true)
+        if (isclosetodoor == true && int.Parse(pointstxt.text) >= doorCost && inputManager.Interacted() == true && forShards == false)
         {
             RemovePoints(doorCost);
+            OutOfDoorRange();
+            Destroy(closestdoor);
+        }
+        if (isclosetodoor == true && playerInfoManager.shards >= doorCost && inputManager.Interacted() == true && forShards == true)
+        {
+            RemoveShards(doorCost);
             OutOfDoorRange();
             Destroy(closestdoor);
         }
@@ -208,13 +215,26 @@ public class GameManager : MonoBehaviour
         pointstxt.text = tempint.ToString();
     }
 
-    public void CloseToDoor(GameObject door, int costD)
+    public void RemoveShards(int shards) {
+        playerInfoManager.shards -= shards;
+    }
+
+
+    public void CloseToDoor(GameObject door, int costD, bool forS)
     {
+        forShards = forS;
         closestdoor = door;
         isclosetodoor = true;
         doorCost = costD;
         doortxt.gameObject.SetActive(true);
-        doortxt.text = "Buy: " + " (Cost: " + costD.ToString() + ")";
+        if (forS == false)
+        {
+            doortxt.text = "Buy: " + " (Cost: " + costD.ToString() + ")";
+        }
+        if (forS == true)
+        {
+            doortxt.text = "Buy: " + " (Cost: " + costD.ToString() + " Shards )";
+        }
     }
 
     public void OutOfDoorRange()

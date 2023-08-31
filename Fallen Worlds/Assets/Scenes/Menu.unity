@@ -7838,6 +7838,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2727723707238796953, guid: 4ce0c62083146c64eb4122d833b0c1ac,
         type: 3}
+      propertyPath: shards
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2727723707238796953, guid: 4ce0c62083146c64eb4122d833b0c1ac,
+        type: 3}
       propertyPath: backpack.Array.size
       value: 4
       objectReference: {fileID: 0}

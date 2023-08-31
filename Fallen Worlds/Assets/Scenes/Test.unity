@@ -2293,6 +2293,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 4033819042326221047, guid: 83fab61a5de556144afe45631ef3639b,
+        type: 3}
+      propertyPath: shards
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4033819042326221051, guid: 83fab61a5de556144afe45631ef3639b,
         type: 3}
       propertyPath: m_RootOrder

@@ -6,7 +6,8 @@ public class Door : MonoBehaviour
 {
     private GameManager gm;
     [SerializeField]
-    int cost;
+    public int cost;
+    public bool shards = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter(Collider other){ //if the player is close enough to the door spawn UI
         if (other.gameObject.tag == "Player"){
-            gm.CloseToDoor(this.gameObject, cost);
+            gm.CloseToDoor(this.gameObject, cost, shards);
         }
     }
 

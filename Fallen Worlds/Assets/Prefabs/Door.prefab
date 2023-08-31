@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 200
+  shards: 0
 --- !u!65 &4033819042326221050
 BoxCollider:
   m_ObjectHideFlags: 0
