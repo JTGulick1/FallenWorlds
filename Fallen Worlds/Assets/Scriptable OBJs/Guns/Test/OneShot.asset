@@ -16,4 +16,9 @@ MonoBehaviour:
   magSize: 99999
   spareBullets: 99999
   bulllet: {fileID: 8287771000947808528, guid: ffdbe6f9e75958147b45c27de58e39ed, type: 3}
+  fireRate: 0
+  burstCooldown: 0
+  falloff: 2
   fullAuto: 1
+  tBurst: 0
+  fBurst: 0

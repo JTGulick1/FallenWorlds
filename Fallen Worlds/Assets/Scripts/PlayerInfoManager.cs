@@ -125,12 +125,13 @@ public class PlayerInfoManager : MonoBehaviour
         }
     }
 
-    public void PointsToShards(int Points)
+    public int PointsToShards(int Points)
     {
         float temp = 0;
         // Takes every 100 points that the player has and converts it to 1 shard
         temp += Points / 100;
         shards = ((int)temp);
+        return ((int)temp);
     }
 
     public void AddToInventory(List<Item> items)

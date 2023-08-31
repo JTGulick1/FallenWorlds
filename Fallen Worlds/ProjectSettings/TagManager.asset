@@ -17,6 +17,7 @@ TagManager:
   - InvCanvas
   - BleedingOutIMG
   - inGameInv
+  - GainedTXT
   layers:
   - Default
   - TransparentFX

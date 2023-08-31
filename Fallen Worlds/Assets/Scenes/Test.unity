@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 6bb2bb90526e537469b24f686a67e05a, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 1f95371a133329e44a7ad34ed1e5220e, type: 2}
 --- !u!1 &61552770
 GameObject:
   m_ObjectHideFlags: 0
@@ -2208,7 +2208,7 @@ PrefabInstance:
         type: 3}
       propertyPath: primaryGun
       value: 
-      objectReference: {fileID: 11400000, guid: 46113107f2239984dbb71a1fcff310b0,
+      objectReference: {fileID: 11400000, guid: 96333b462ad5a004ea8c1ede34653064,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8798772d1ca51134d93df2896eface37, type: 3}

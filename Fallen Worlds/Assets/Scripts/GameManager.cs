@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
     private bool playerIsNoMore = false;
     private float backtoLobby = 0.0f;
     private string lobby;
+    private int shardsGained;
+    private TMPro.TMP_Text gained;
 
     private void Awake()
     {
@@ -70,6 +72,8 @@ public class GameManager : MonoBehaviour
         backpack = GameObject.FindGameObjectWithTag("Player").GetComponent<Backpack>();
         clipAmmo = GameObject.FindGameObjectWithTag("ClipTXT").GetComponent<Text>();
         spareAmmo = GameObject.FindGameObjectWithTag("SpareTXT").GetComponent<Text>();
+        gained = GameObject.FindGameObjectWithTag("GainedTXT").GetComponent<TMPro.TMP_Text>();
+        gained.gameObject.SetActive(false);
         playerInfoManager.FindGameManager();
         doortxt.gameObject.SetActive(false);
         endScreen.SetActive(false);
@@ -115,12 +119,14 @@ public class GameManager : MonoBehaviour
         if (isclosetoportal == true && int.Parse(pointstxt.text) >= portalCost - ((playerInfoManager.portalLevel - 1) * 100) && inputManager.Interacted() == true)
         {
             doortxt.gameObject.SetActive(true);
+            gained.gameObject.SetActive(true);
             RemovePoints(portalCost);
             doortxt.text = "You Survived";
             pointstxt.gameObject.SetActive(false);
             Destroy(gunController.gameObject);
             endScreen.SetActive(true);
-            playerInfoManager.PointsToShards(int.Parse(pointstxt.text));
+            shardsGained = playerInfoManager.PointsToShards(int.Parse(pointstxt.text));
+            gained.text = "Shards Gained: " + shardsGained;
             playerInfoManager.AddToInventory(backpack.items);
             playerIsNoMore = true;
         }
