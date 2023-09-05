@@ -117,6 +117,13 @@ public class GunController : MonoBehaviour
         gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
     }
 
+    public void FullAmmo()
+    {
+        ammoInClipPrimary = primaryGun.magSize;
+        spareAmmoPrimary = primaryGun.spareBullets;
+        gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
+    }
+
     public void FireGun()
     {
         if (primaryGun.tBurst != true && primaryGun.fBurst != true)

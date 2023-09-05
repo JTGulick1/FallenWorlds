@@ -8,6 +8,8 @@ public class BuyStation : MonoBehaviour
     [SerializeField]
     private int cost;
     [SerializeField]
+    private int reloadCost;
+    [SerializeField]
     private Guns weopon;
     void Start()
     {
@@ -18,7 +20,7 @@ public class BuyStation : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            gm.CloseToBuy(weopon, cost);
+            gm.CloseToBuy(weopon, cost, reloadCost);
         }
     }
 

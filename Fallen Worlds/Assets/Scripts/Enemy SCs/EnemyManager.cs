@@ -37,6 +37,10 @@ public class EnemyManager : MonoBehaviour
             }
             gm.enemysOnFeild--;
             gm.AddPoints(points);
+            if (gm.leftOver > 0)
+            {
+                gm.SpawnLeftOvers();
+            }
             Destroy(this.gameObject);
         }
     }
