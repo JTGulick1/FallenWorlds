@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
     [Header("Guns")]
     private Text clipAmmo;
     private Text spareAmmo;
+    private bool refuel;
 
     [Header("End Game")]
     private PlayerInfoManager playerInfoManager;
@@ -130,9 +131,14 @@ public class GameManager : MonoBehaviour
             playerInfoManager.AddToInventory(backpack.items);
             playerIsNoMore = true;
         }
-        if (isclosetobuy == true && int.Parse(pointstxt.text) >= buyCost && inputManager.Interacted() == true && gunController.primaryGun != tempWeopon)
+        if (isclosetobuy == true && int.Parse(pointstxt.text) >= buyCost && inputManager.Interacted() == true && gunController.primaryGun != tempWeopon && refuel == false)
         {
             gunController.BoughtWeopon(tempWeopon);
+            RemovePoints(buyCost);
+        }
+        if (isclosetobuy == true && int.Parse(pointstxt.text) >= buyCost && inputManager.Interacted() == true && gunController.primaryGun == tempWeopon && refuel == true)
+        {
+            gunController.FullAmmo();
             RemovePoints(buyCost);
         }
         if (enemysOnFeild == 0)
@@ -169,8 +175,8 @@ public class GameManager : MonoBehaviour
     {
         if (spawnNumber >= 33) // max number of bad guys at one time
         {
-            leftOver = spawnNumber - 33;
             enemysOnFeild = spawnNumber;
+            leftOver = spawnNumber - 33;
             while (spawnNumber != 0)
             {
                 for (int i = 0; i < spawners.Count; i++)
@@ -182,6 +188,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+            return;
         }
         if (spawnNumber <= 33)
         {
@@ -198,13 +205,16 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        leftOver = 0;
     }
 
     public void SpawnLeftOvers()
     {
-        int randomSpawner = Random.Range(0, spawners.Count);
-        spawners[randomSpawner].GetComponent<SpawnEnemy>().Spawn(baseEnemy);
+        if (leftOver > 0)
+        {
+            int randomSpawner = Random.Range(0, spawners.Count);
+            spawners[randomSpawner].GetComponent<SpawnEnemy>().Spawn(baseEnemy);
+            leftOver--;
+        }
     }
 
     public void AddPoints(int pts)
@@ -249,13 +259,26 @@ public class GameManager : MonoBehaviour
         doortxt.gameObject.SetActive(false);
     }
 
-    public void CloseToBuy(Guns gun, int costD)
+    public void CloseToBuy(Guns gun, int costD, int reloadCost)
     {
-        tempWeopon = gun;
-        isclosetobuy = true;
-        buyCost = costD;
-        doortxt.gameObject.SetActive(true);
-        doortxt.text = "Buy: " + gun.name + " (Cost: " + costD.ToString() + ")";
+        if (gunController.primaryGun == gun){
+            refuel = true;
+            tempWeopon = gun;
+            isclosetobuy = true;
+            buyCost = reloadCost;
+            doortxt.gameObject.SetActive(true);
+            doortxt.text = "Buy Ammo: " + gun.name + " (Cost: " + reloadCost.ToString() + ")";
+            return;
+        }
+        if (gunController.primaryGun != gun){
+            refuel = false;
+            tempWeopon = gun;
+            isclosetobuy = true;
+            buyCost = costD;
+            doortxt.gameObject.SetActive(true);
+            doortxt.text = "Buy: " + gun.name + " (Cost: " + costD.ToString() + ")";
+            return;
+        }
     }
 
     public void OutOfBuyRange()
