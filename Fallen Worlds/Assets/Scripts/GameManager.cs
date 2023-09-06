@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     private float spawntimer;
 
-    private int waveNumber = 8;
+    private int waveNumber = 1;
     private int spawnNumber = 7;
     public int enemysOnFeild = -1;
     public int leftOver = 0;
