@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnEnemy : MonoBehaviour
 {
     private float timer = 0.0f;
-    private float nextSpawn = 2.0f;
+    private float nextSpawn = 3.0f;
     public int totalToSpawn = 0;
     private GameObject type;
     private void Update()
