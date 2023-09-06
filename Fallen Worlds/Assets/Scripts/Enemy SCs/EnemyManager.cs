@@ -44,14 +44,6 @@ public class EnemyManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-    private void OnCollisionEnter(Collision collision) //when shot
-    {
-        if (collision.gameObject.tag == "Bullet") 
-        {
-            health -= collision.gameObject.GetComponent<Bullet>().damage;
-        }
-    }
     private void OnTriggerEnter(Collider other) //Attacking player
     {
         if (other.gameObject.tag == "Player")
@@ -59,6 +51,11 @@ public class EnemyManager : MonoBehaviour
             target.timer = 0.0f;
             target.playersHealth -= 10.0f;
         }
+    }
+
+    public void Shot(float damage)
+    {
+        health -= damage;
     }
 
     private void SpawnItem() // If the enemy drops and item

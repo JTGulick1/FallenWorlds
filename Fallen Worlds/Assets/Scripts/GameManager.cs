@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
             {
                 waveNumber++;
                 wavenumTXT.text = waveNumber.ToString();
-                spawnNumber += (7 +(3 * waveNumber));
+                spawnNumber += (7 + (3 * waveNumber));
                 SpawnWave();
                 spawntimer = 0.0f;
             }
@@ -173,19 +173,18 @@ public class GameManager : MonoBehaviour
     #region Helper Functions
     public void SpawnWave()
     {
-        if (spawnNumber >= 33) // max number of bad guys at one time
-        {
+         if (spawnNumber >= 33) // max number of bad guys at one time
+         {
             enemysOnFeild = spawnNumber;
             leftOver = spawnNumber - 33;
-            while (spawnNumber != 0)
+            enemysOnFeild -= leftOver;
+            for (int i = 0; i < 33; i++)
             {
-                for (int i = 0; i < spawners.Count; i++)
+                if (spawnNumber > 0)
                 {
-                    if (spawnNumber != 0)
-                    {
-                        spawners[i].GetComponent<SpawnEnemy>().Spawn(baseEnemy);
-                        spawnNumber--;
-                    }
+                    int randomSpawner = Random.Range(0, spawners.Count);
+                    spawners[randomSpawner].GetComponent<SpawnEnemy>().Spawn(baseEnemy);
+                    spawnNumber--;
                 }
             }
             return;
@@ -209,10 +208,12 @@ public class GameManager : MonoBehaviour
 
     public void SpawnLeftOvers()
     {
+        enemysOnFeild++;
         if (leftOver > 0)
         {
             int randomSpawner = Random.Range(0, spawners.Count);
             spawners[randomSpawner].GetComponent<SpawnEnemy>().Spawn(baseEnemy);
+            spawnNumber--;
             leftOver--;
         }
     }
@@ -231,7 +232,8 @@ public class GameManager : MonoBehaviour
         pointstxt.text = tempint.ToString();
     }
 
-    public void RemoveShards(int shards) {
+    public void RemoveShards(int shards)
+    {
         playerInfoManager.shards -= shards;
     }
 
@@ -245,11 +247,11 @@ public class GameManager : MonoBehaviour
         doortxt.gameObject.SetActive(true);
         if (forS == false)
         {
-            doortxt.text = "Buy: " + " (Cost: " + costD.ToString() + ")";
+            doortxt.text = "Buy Door: " + " (Cost: " + costD.ToString() + ")";
         }
         if (forS == true)
         {
-            doortxt.text = "Buy: " + " (Cost: " + costD.ToString() + " Shards )";
+            doortxt.text = "Buy Door: " + " (Cost: " + costD.ToString() + " Shards)";
         }
     }
 
@@ -261,7 +263,8 @@ public class GameManager : MonoBehaviour
 
     public void CloseToBuy(Guns gun, int costD, int reloadCost)
     {
-        if (gunController.primaryGun == gun){
+        if (gunController.primaryGun == gun)
+        {
             refuel = true;
             tempWeopon = gun;
             isclosetobuy = true;
@@ -270,7 +273,8 @@ public class GameManager : MonoBehaviour
             doortxt.text = "Buy Ammo: " + gun.name + " (Cost: " + reloadCost.ToString() + ")";
             return;
         }
-        if (gunController.primaryGun != gun){
+        if (gunController.primaryGun != gun)
+        {
             refuel = false;
             tempWeopon = gun;
             isclosetobuy = true;

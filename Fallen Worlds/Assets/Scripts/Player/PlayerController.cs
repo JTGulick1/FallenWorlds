@@ -14,6 +14,8 @@ public class PlayerController: MonoBehaviour
     private float jumpHeight = 1.0f;
     [SerializeField]
     private float gravityValue = -9.81f;
+    private float gravityDamage = 0f;
+    private float offGroundTimer = 0f;
     
     private float playerBaseSpeed = 6.0f;
 
@@ -101,7 +103,26 @@ public class PlayerController: MonoBehaviour
             }
         }
 
-        playerVelocity.y += gravityValue * Time.deltaTime;
+        if (groundedPlayer != true) // Fall Damage
+        {
+            offGroundTimer += Time.deltaTime;
+            if (offGroundTimer > 0.5f)
+            {
+                gravityDamage = offGroundTimer * 10.0f;
+            }
+        }
+
+        if (groundedPlayer == true) // Fall Damage Cont:
+        {
+            offGroundTimer = 0.0f;
+            if (gravityDamage >= 1)
+            {
+                playersHealth -= gravityDamage;
+                gravityDamage = 0.0f;
+            }
+        }
+
+        playerVelocity.y += (gravityValue * Time.deltaTime) * 2;
         controller.Move(playerVelocity * Time.deltaTime);
     }
 }
