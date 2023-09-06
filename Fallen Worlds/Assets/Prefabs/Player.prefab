@@ -76,6 +76,7 @@ MonoBehaviour:
   playersHealth: 30
   regenTime: 7
   timer: 0
+  inventory: {fileID: 0}
 --- !u!114 &173705582172475685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5226,6 +5227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8821758959215743444}
+  - component: {fileID: 8435544871371890546}
   m_Layer: 3
   m_Name: ShootFrom
   m_TagString: Untagged
@@ -5248,6 +5250,20 @@ Transform:
   m_Father: {fileID: 8821758958844810516}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8435544871371890546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8821758959215743443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 756423cb767cd3a44b37b1402258a369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootFrom: {fileID: 8821758959215743443}
+  enemyManager: {fileID: 0}
 --- !u!1 &8821758959604774675
 GameObject:
   m_ObjectHideFlags: 0

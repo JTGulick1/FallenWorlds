@@ -14,6 +14,7 @@ public class GunController : MonoBehaviour
     private GameObject mostRecentBullet;
     private GameManager gm;
     private PlayerInfoManager playerInfoManager;
+    private GunRaycast gunRaycast;
 
     private int ammoInClipPrimary;
     private int spareAmmoPrimary;
@@ -32,6 +33,7 @@ public class GunController : MonoBehaviour
         inputManager = InputManager.Instance;
         inputManager.auto = primaryGun.fullAuto;
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        gunRaycast = GetComponentInChildren<GunRaycast>();
         ammoInClipPrimary = primaryGun.magSize;
         spareAmmoPrimary = primaryGun.spareBullets + (playerInfoManager.weoponsLevel - 1) * (ammoInClipPrimary / 4);
         gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
@@ -129,22 +131,22 @@ public class GunController : MonoBehaviour
         if (primaryGun.tBurst != true && primaryGun.fBurst != true)
         {
             gunflare.Play();
+            gunRaycast.FireRaycast();
             mostRecentBullet = Instantiate(bullet, shootFrom.transform.position, shootFrom.transform.rotation);
             mostRecentBullet.GetComponent<Bullet>().falloff = primaryGun.falloff;
             ammoInClipPrimary--;
             gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
-            mostRecentBullet.GetComponent<Bullet>().SetDamage(primaryGun.damage);
             timer = 0.0f;
             return;
         }
         if (primaryGun.tBurst == true && cooldown > primaryGun.burstCooldown)
         {
             gunflare.Play();
+            gunRaycast.FireRaycast();
             mostRecentBullet = Instantiate(bullet, shootFrom.transform.position, shootFrom.transform.rotation);
             mostRecentBullet.GetComponent<Bullet>().falloff = primaryGun.falloff;
             ammoInClipPrimary--;
             gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
-            mostRecentBullet.GetComponent<Bullet>().SetDamage(primaryGun.damage);
             timer = 0.0f;
             bulletTick++;
             if (bulletTick > 2)
@@ -157,11 +159,11 @@ public class GunController : MonoBehaviour
         if (primaryGun.fBurst == true && cooldown > primaryGun.burstCooldown)
         {
             gunflare.Play();
+            gunRaycast.FireRaycast();
             mostRecentBullet = Instantiate(bullet, shootFrom.transform.position, shootFrom.transform.rotation);
             mostRecentBullet.GetComponent<Bullet>().falloff = primaryGun.falloff;
             ammoInClipPrimary--;
             gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
-            mostRecentBullet.GetComponent<Bullet>().SetDamage(primaryGun.damage);
             timer = 0.0f;
             bulletTick++;
             if (bulletTick > 3)

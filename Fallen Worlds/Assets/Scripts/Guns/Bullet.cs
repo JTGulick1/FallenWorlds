@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 50.0f;
+    private float speed = 100.0f;
     public float damage;
     private Rigidbody rb;
     public float falloff;
@@ -19,11 +19,6 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         rb.AddForce(transform.forward * speed);
-    }
-
-    public void SetDamage(float dam)
-    {
-        damage = dam;
     }
 
     private void OnCollisionEnter(Collision collision)
