@@ -11,7 +11,7 @@ public class EnemyManager : MonoBehaviour
     private int points = 50;
     private GameManager gm;
     private PlayerController target;
-    private NavMeshAgent meshAgent;
+    public NavMeshAgent meshAgent;
     public GameObject item;
     void Start()
     {
