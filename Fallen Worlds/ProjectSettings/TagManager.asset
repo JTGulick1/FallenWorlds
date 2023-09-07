@@ -18,6 +18,8 @@ TagManager:
   - BleedingOutIMG
   - inGameInv
   - GainedTXT
+  - CraftingCanvas
+  - Jav
   layers:
   - Default
   - TransparentFX
