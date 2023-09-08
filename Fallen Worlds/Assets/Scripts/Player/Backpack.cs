@@ -35,11 +35,24 @@ public class Backpack : MonoBehaviour
             if (items[i] == item)
             {
                 items.RemoveAt(i);
-                Debug.Log(i);
                 inGamebp.UpdateINV();
                 return true;
             }
         }
         return false;
     }
+
+    public bool CheckForItemOnly(Item item)
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i] == item)
+            {
+                inGamebp.UpdateINV();
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

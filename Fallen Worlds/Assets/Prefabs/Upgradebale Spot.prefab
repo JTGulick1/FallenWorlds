@@ -125,4 +125,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b73279a3bb47954ba1acdef6bb68aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgrade: 0
+  HI1: {fileID: 11400000, guid: c380d624472f16d4b91fb21f6d09d2e8, type: 2}
+  HI2: {fileID: 11400000, guid: ac56f856c4a76e0449ab033425e8ba36, type: 2}
+  HI3: {fileID: 11400000, guid: 569db06e5ffe4b64c9356dedcb33aeb9, type: 2}
+  HealthUpgradeTotom: {fileID: 8632353528200227911, guid: 595cb10a66665d94fb6a4cf195484362,
+    type: 3}
+  SI1: {fileID: 11400000, guid: 2439e79ad0facd840b5cb585e820acbb, type: 2}
+  SI2: {fileID: 11400000, guid: b9d71dcee45bb1249b91af226c9acd9f, type: 2}
+  SI3: {fileID: 11400000, guid: e22738e71d10d784a84d4164887cd460, type: 2}
+  SpeedUpgradeTotom: {fileID: 8632353528200227911, guid: 70fe9925a48996046805de356b2e1206,
+    type: 3}
+  upgrade: 1

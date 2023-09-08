@@ -18,6 +18,7 @@ public class PlayerController: MonoBehaviour
     private float offGroundTimer = 0f;
     
     private float playerBaseSpeed = 6.0f;
+    private float sprintingSpeed = 12.0f;
 
     public float playersHealth = 30.0f;
 
@@ -85,7 +86,7 @@ public class PlayerController: MonoBehaviour
         }
 
         if (inputManager.Sprinting() == true){
-            playerSpeed = 12.0f;
+            playerSpeed = sprintingSpeed;
         }else{
             playerSpeed = playerBaseSpeed;
         }
@@ -124,5 +125,12 @@ public class PlayerController: MonoBehaviour
 
         playerVelocity.y += (gravityValue * Time.deltaTime) * 2;
         controller.Move(playerVelocity * Time.deltaTime);
+    }
+
+    public void ChangeSpeed(int speed, int Sprinting)
+    {
+        playerSpeed = speed;
+        playerBaseSpeed = speed;
+        sprintingSpeed = Sprinting;
     }
 }

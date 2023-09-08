@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     private Item USItem2;
     private Item USItem3;
     private bool closeToUpgrade;
+    public UpgradeableSpot upgradeableSpot;
 
     [Header("End Game")]
     private PlayerInfoManager playerInfoManager;
@@ -102,9 +103,12 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (backpack.CheckForItem(USItem1) && backpack.CheckForItem(USItem2) && backpack.CheckForItem(USItem3) && closeToUpgrade == true && inputManager.Interacted())
+        if (backpack.CheckForItemOnly(USItem1) && backpack.CheckForItemOnly(USItem2) && backpack.CheckForItemOnly(USItem3) && closeToUpgrade == true && inputManager.Interacted())
         {
-
+            backpack.CheckForItem(USItem1);
+            backpack.CheckForItem(USItem2);
+            backpack.CheckForItem(USItem3);
+            upgradeableSpot.Upgraded();
         }
         if (isclosetodoor == true && int.Parse(pointstxt.text) >= doorCost && inputManager.Interacted() == true && forShards == false)
         {
@@ -376,13 +380,15 @@ public class GameManager : MonoBehaviour
         USItem1 = item1;
         USItem2 = item2;
         USItem3 = item3;
+        closeToUpgrade = true;
         doortxt.gameObject.SetActive(true);
         doortxt.text = "Upgrade Spot?";
     }
 
     public void OutofUpgradeRange()
     {
-
+        closeToUpgrade = false;
+        doortxt.gameObject.SetActive(false);
     }
 
     #endregion;
