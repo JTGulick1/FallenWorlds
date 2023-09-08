@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     [Header("Enemy Info")]
     public List<GameObject> spawners = new List<GameObject>();
     public GameObject baseEnemy;
+    [SerializeField]
+    private GameObject boss;
 
     private InputManager inputManager;
     private GunController gunController;
@@ -168,6 +170,11 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        if (waveNumber % 7 == 0 )
+        {
+            SpawnBoss();
+        }
+
         if (playerIsNoMore == true)
         {
             playerInfoManager.inGameTick = false;
@@ -231,7 +238,11 @@ public class GameManager : MonoBehaviour
             leftOver--;
         }
     }
-
+    public void SpawnBoss()
+    {
+        int randomSpawner = Random.Range(0, spawners.Count);
+        spawners[randomSpawner].GetComponent<SpawnEnemy>().Spawn(boss);
+    }
     public void AddPoints(int pts)
     {
         pts += int.Parse(pointstxt.text);
