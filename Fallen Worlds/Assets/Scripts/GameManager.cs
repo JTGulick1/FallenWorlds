@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     [Header("Enemy Info")]
     public List<GameObject> spawners = new List<GameObject>();
     public GameObject baseEnemy;
+    [SerializeField]
+    private GameObject boss;
 
     private InputManager inputManager;
     private GunController gunController;
@@ -53,6 +55,13 @@ public class GameManager : MonoBehaviour
     private Text clipAmmo;
     private Text spareAmmo;
     private bool refuel;
+
+    [Header("Upgradable Spot Items")]
+    private Item USItem1;
+    private Item USItem2;
+    private Item USItem3;
+    private bool closeToUpgrade;
+    public UpgradeableSpot upgradeableSpot;
 
     [Header("End Game")]
     private PlayerInfoManager playerInfoManager;
@@ -96,6 +105,13 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (backpack.CheckForItemOnly(USItem1) && backpack.CheckForItemOnly(USItem2) && backpack.CheckForItemOnly(USItem3) && closeToUpgrade == true && inputManager.Interacted())
+        {
+            backpack.CheckForItem(USItem1);
+            backpack.CheckForItem(USItem2);
+            backpack.CheckForItem(USItem3);
+            upgradeableSpot.Upgraded();
+        }
         if (isclosetodoor == true && int.Parse(pointstxt.text) >= doorCost && inputManager.Interacted() == true && forShards == false)
         {
             RemovePoints(doorCost);
@@ -152,6 +168,11 @@ public class GameManager : MonoBehaviour
                 SpawnWave();
                 spawntimer = 0.0f;
             }
+        }
+
+        if (waveNumber % 7 == 0 )
+        {
+            SpawnBoss();
         }
 
         if (playerIsNoMore == true)
@@ -217,7 +238,11 @@ public class GameManager : MonoBehaviour
             leftOver--;
         }
     }
-
+    public void SpawnBoss()
+    {
+        int randomSpawner = Random.Range(0, spawners.Count);
+        spawners[randomSpawner].GetComponent<SpawnEnemy>().Spawn(boss);
+    }
     public void AddPoints(int pts)
     {
         pts += int.Parse(pointstxt.text);
@@ -359,6 +384,22 @@ public class GameManager : MonoBehaviour
         doortxt.text = "You Died";
         playerIsNoMore = true;
         Destroy(gunController.gameObject);
+    }
+
+    public void Upgradeable(Item item1, Item item2, Item item3)
+    {
+        USItem1 = item1;
+        USItem2 = item2;
+        USItem3 = item3;
+        closeToUpgrade = true;
+        doortxt.gameObject.SetActive(true);
+        doortxt.text = "Upgrade Spot?";
+    }
+
+    public void OutofUpgradeRange()
+    {
+        closeToUpgrade = false;
+        doortxt.gameObject.SetActive(false);
     }
 
     #endregion;
