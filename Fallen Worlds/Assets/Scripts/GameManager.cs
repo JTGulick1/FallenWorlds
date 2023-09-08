@@ -54,6 +54,12 @@ public class GameManager : MonoBehaviour
     private Text spareAmmo;
     private bool refuel;
 
+    [Header("Upgradable Spot Items")]
+    private Item USItem1;
+    private Item USItem2;
+    private Item USItem3;
+    private bool closeToUpgrade;
+
     [Header("End Game")]
     private PlayerInfoManager playerInfoManager;
     private bool playerIsNoMore = false;
@@ -96,6 +102,10 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (backpack.CheckForItem(USItem1) && backpack.CheckForItem(USItem2) && backpack.CheckForItem(USItem3) && closeToUpgrade == true && inputManager.Interacted())
+        {
+
+        }
         if (isclosetodoor == true && int.Parse(pointstxt.text) >= doorCost && inputManager.Interacted() == true && forShards == false)
         {
             RemovePoints(doorCost);
@@ -359,6 +369,20 @@ public class GameManager : MonoBehaviour
         doortxt.text = "You Died";
         playerIsNoMore = true;
         Destroy(gunController.gameObject);
+    }
+
+    public void Upgradeable(Item item1, Item item2, Item item3)
+    {
+        USItem1 = item1;
+        USItem2 = item2;
+        USItem3 = item3;
+        doortxt.gameObject.SetActive(true);
+        doortxt.text = "Upgrade Spot?";
+    }
+
+    public void OutofUpgradeRange()
+    {
+
     }
 
     #endregion;
