@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     public GameObject baseEnemy;
     [SerializeField]
     private GameObject boss;
+    public GameObject b_spawn;
+    private bool bossSpawned = false;
 
     private InputManager inputManager;
     private GunController gunController;
@@ -170,9 +172,15 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (waveNumber % 7 == 0 )
+        if (waveNumber % 7 == 0 && bossSpawned == false)
         {
             SpawnBoss();
+            bossSpawned = true;
+        }
+
+        if (bossSpawned == true && waveNumber % 7 != 0)
+        {
+            bossSpawned = false;
         }
 
         if (playerIsNoMore == true)
@@ -240,8 +248,7 @@ public class GameManager : MonoBehaviour
     }
     public void SpawnBoss()
     {
-        int randomSpawner = Random.Range(0, spawners.Count);
-        spawners[randomSpawner].GetComponent<SpawnEnemy>().Spawn(boss);
+        Instantiate(boss, b_spawn.transform.position, b_spawn.transform.rotation);
     }
     public void AddPoints(int pts)
     {
