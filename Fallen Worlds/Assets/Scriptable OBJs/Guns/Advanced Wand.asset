@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8197d0c0202ad88449482b14360685e1, type: 3}
+  m_Name: Advanced Wand
+  m_EditorClassIdentifier: 
+  damage: 40
+  magSize: 10
+  spareBullets: 200
+  bulllet: {fileID: 8287771000947808528, guid: ffdbe6f9e75958147b45c27de58e39ed, type: 3}
+  fireRate: 0
+  burstCooldown: 0
+  falloff: 4
+  fullAuto: 0
+  tBurst: 0
+  fBurst: 0

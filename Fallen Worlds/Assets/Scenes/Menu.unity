@@ -7844,7 +7844,7 @@ PrefabInstance:
     - target: {fileID: 2727723707238796953, guid: 4ce0c62083146c64eb4122d833b0c1ac,
         type: 3}
       propertyPath: backpack.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2727723707238796953, guid: 4ce0c62083146c64eb4122d833b0c1ac,
         type: 3}
@@ -7855,7 +7855,7 @@ PrefabInstance:
         type: 3}
       propertyPath: backpack.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 2439e79ad0facd840b5cb585e820acbb,
+      objectReference: {fileID: 11400000, guid: d272183d820dd764898e7d490efae714,
         type: 2}
     - target: {fileID: 2727723707238796953, guid: 4ce0c62083146c64eb4122d833b0c1ac,
         type: 3}
