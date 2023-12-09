@@ -32,9 +32,10 @@ public class PlayerController: MonoBehaviour
     private Transform camTransform;
     private GameManager gameManager;
     private PlayerInfoManager playerInfoManager;
+    public GameObject cBrain;
     public GameObject inventory;
-
     private bool curBool = true;
+    private GunController GC;
 
     private void Start()
     {
@@ -43,6 +44,7 @@ public class PlayerController: MonoBehaviour
         inputManager = InputManager.Instance;
         camTransform = Camera.main.transform;
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        GC = GetComponent<GunController>();
         inventory = GameObject.FindGameObjectWithTag("inGameInv");
         inventory.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
@@ -97,11 +99,17 @@ public class PlayerController: MonoBehaviour
         {
             if (inventory.activeSelf == true)
             {
+                LockC();
+                GC.StopFire();
+                cBrain.SetActive(true);
                 inventory.SetActive(false);
                 return;
             }
             if (inventory.activeSelf == false)
             {
+                LockC();
+                GC.StopFire();
+                cBrain.SetActive(false);
                 inventory.SetActive(true);
                 return;
             }
@@ -131,18 +139,22 @@ public class PlayerController: MonoBehaviour
 
         if (inputManager.Cursor())
         {
-            if (curBool == true)
-            {
-                Cursor.lockState = CursorLockMode.None;
-                curBool = false;
-                return;
-            }
-            if (curBool == false)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                curBool = true;
-                return;
-            }
+            LockC();
+        }
+    }
+
+    public void LockC(){
+        if (curBool == true)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            curBool = false;
+            return;
+        }
+        if (curBool == false)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            curBool = true;
+            return;
         }
     }
 

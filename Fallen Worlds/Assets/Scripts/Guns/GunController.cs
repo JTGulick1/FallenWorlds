@@ -29,6 +29,8 @@ public class GunController : MonoBehaviour
     private float cooldown = 0.0f;
     private int bulletTick;
 
+    private bool fireTick = true;
+
     public AudioSource gunSound;
 
     void Start()
@@ -47,13 +49,13 @@ public class GunController : MonoBehaviour
     {
         timer += Time.deltaTime;
         cooldown += Time.deltaTime;
-        if (inputManager.Fire() == true && ammoInClipPrimary != 0 && timer > primaryGun.fireRate && cooldown > primaryGun.burstCooldown)
+        if (inputManager.Fire() == true && ammoInClipPrimary != 0 && timer > primaryGun.fireRate && cooldown > primaryGun.burstCooldown && fireTick == true)
         {
             gunSound.clip = primaryGun.shootingSound;
             gunSound.Play();
             FireGun();
         }
-        if (inputManager.Fire() == true && ammoInClipPrimary == 0 && timer > primaryGun.fireRate && cooldown > primaryGun.burstCooldown)
+        if (inputManager.Fire() == true && ammoInClipPrimary == 0 && timer > primaryGun.fireRate && cooldown > primaryGun.burstCooldown && fireTick == true)
         {
             gunSound.clip = primaryGun.emptySound;
             gunSound.Play();
@@ -190,6 +192,20 @@ public class GunController : MonoBehaviour
                 cooldown = 0.0f;
                 bulletTick = 0;
             }
+            return;
+        }
+    }
+
+    public void StopFire()
+    {
+        if (fireTick == true)
+        {
+            fireTick = false;
+            return;
+        }
+        if (fireTick == false)
+        {
+            fireTick = true;
             return;
         }
     }
