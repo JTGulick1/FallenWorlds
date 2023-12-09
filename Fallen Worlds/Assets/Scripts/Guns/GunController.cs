@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Cinemachine;
 public class GunController : MonoBehaviour
 {
     public Guns primaryGun;
@@ -15,6 +15,8 @@ public class GunController : MonoBehaviour
     private GameManager gm;
     private PlayerInfoManager playerInfoManager;
     private GunRaycast gunRaycast;
+
+    public CinemachineVirtualCamera vCamera;
 
     private int ammoInClipPrimary;
     private int spareAmmoPrimary;
@@ -77,6 +79,14 @@ public class GunController : MonoBehaviour
         if (inputManager.Reload() == true)
         {
             Reload();
+        }
+        if (inputManager.ADS())
+        {
+            vCamera.m_Lens.FieldOfView = primaryGun.zoom;
+        }
+        if (inputManager.ADS() == false)
+        {
+            vCamera.m_Lens.FieldOfView = 60.0f;
         }
     }
 

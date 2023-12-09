@@ -95,6 +95,7 @@ MonoBehaviour:
   shootFrom: {fileID: 8821758959215743444}
   bullet: {fileID: 8287771000947808528, guid: ffdbe6f9e75958147b45c27de58e39ed, type: 3}
   gunflare: {fileID: 5724130690767676252}
+  vCamera: {fileID: 8821758960451240718}
   gunSound: {fileID: 479806837105817527}
 --- !u!136 &8821758958961317382
 CapsuleCollider:

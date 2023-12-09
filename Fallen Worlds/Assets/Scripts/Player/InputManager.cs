@@ -80,4 +80,14 @@ public class InputManager : MonoBehaviour
     {
         return inputActions.MouseKeyboard.OpenInventory.triggered;
     }
+
+    public bool ADS()
+    {
+        return inputActions.MouseKeyboard.ADS.IsPressed();
+    }
+
+    public bool Cursor()
+    {
+        return inputActions.MouseKeyboard.LockUnlock.triggered;
+    }
 }

@@ -98,6 +98,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ADS"",
+                    ""type"": ""Button"",
+                    ""id"": ""edb671a7-6225-43ca-ac2d-5eba656fa0e9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LockUnlock"",
+                    ""type"": ""Button"",
+                    ""id"": ""c9233df6-c670-4b0f-bf85-26f0170b54a1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -232,6 +250,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""OpenInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7df9cd4d-0a7a-402d-b8e5-58571274f9fc"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ADS"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""57631860-01ad-4837-9314-6df95670a3a3"",
+                    ""path"": ""<Keyboard>/backquote"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LockUnlock"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -248,6 +288,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_MouseKeyboard_Interact = m_MouseKeyboard.FindAction("Interact", throwIfNotFound: true);
         m_MouseKeyboard_Reload = m_MouseKeyboard.FindAction("Reload", throwIfNotFound: true);
         m_MouseKeyboard_OpenInventory = m_MouseKeyboard.FindAction("OpenInventory", throwIfNotFound: true);
+        m_MouseKeyboard_ADS = m_MouseKeyboard.FindAction("ADS", throwIfNotFound: true);
+        m_MouseKeyboard_LockUnlock = m_MouseKeyboard.FindAction("LockUnlock", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -315,6 +357,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_MouseKeyboard_Interact;
     private readonly InputAction m_MouseKeyboard_Reload;
     private readonly InputAction m_MouseKeyboard_OpenInventory;
+    private readonly InputAction m_MouseKeyboard_ADS;
+    private readonly InputAction m_MouseKeyboard_LockUnlock;
     public struct MouseKeyboardActions
     {
         private @PlayerControls m_Wrapper;
@@ -327,6 +371,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_MouseKeyboard_Interact;
         public InputAction @Reload => m_Wrapper.m_MouseKeyboard_Reload;
         public InputAction @OpenInventory => m_Wrapper.m_MouseKeyboard_OpenInventory;
+        public InputAction @ADS => m_Wrapper.m_MouseKeyboard_ADS;
+        public InputAction @LockUnlock => m_Wrapper.m_MouseKeyboard_LockUnlock;
         public InputActionMap Get() { return m_Wrapper.m_MouseKeyboard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -360,6 +406,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @OpenInventory.started -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnOpenInventory;
                 @OpenInventory.performed -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnOpenInventory;
                 @OpenInventory.canceled -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnOpenInventory;
+                @ADS.started -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnADS;
+                @ADS.performed -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnADS;
+                @ADS.canceled -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnADS;
+                @LockUnlock.started -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnLockUnlock;
+                @LockUnlock.performed -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnLockUnlock;
+                @LockUnlock.canceled -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnLockUnlock;
             }
             m_Wrapper.m_MouseKeyboardActionsCallbackInterface = instance;
             if (instance != null)
@@ -388,6 +440,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @OpenInventory.started += instance.OnOpenInventory;
                 @OpenInventory.performed += instance.OnOpenInventory;
                 @OpenInventory.canceled += instance.OnOpenInventory;
+                @ADS.started += instance.OnADS;
+                @ADS.performed += instance.OnADS;
+                @ADS.canceled += instance.OnADS;
+                @LockUnlock.started += instance.OnLockUnlock;
+                @LockUnlock.performed += instance.OnLockUnlock;
+                @LockUnlock.canceled += instance.OnLockUnlock;
             }
         }
     }
@@ -402,5 +460,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnOpenInventory(InputAction.CallbackContext context);
+        void OnADS(InputAction.CallbackContext context);
+        void OnLockUnlock(InputAction.CallbackContext context);
     }
 }

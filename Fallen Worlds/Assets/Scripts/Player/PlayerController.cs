@@ -34,6 +34,8 @@ public class PlayerController: MonoBehaviour
     private PlayerInfoManager playerInfoManager;
     public GameObject inventory;
 
+    private bool curBool = true;
+
     private void Start()
     {
         playerInfoManager = PlayerInfoManager.Instance;
@@ -43,6 +45,7 @@ public class PlayerController: MonoBehaviour
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         inventory = GameObject.FindGameObjectWithTag("inGameInv");
         inventory.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
@@ -125,6 +128,22 @@ public class PlayerController: MonoBehaviour
 
         playerVelocity.y += (gravityValue * Time.deltaTime) * 2;
         controller.Move(playerVelocity * Time.deltaTime);
+
+        if (inputManager.Cursor())
+        {
+            if (curBool == true)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                curBool = false;
+                return;
+            }
+            if (curBool == false)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                curBool = true;
+                return;
+            }
+        }
     }
 
     public void ChangeSpeed(int speed, int Sprinting)
