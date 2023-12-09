@@ -21,6 +21,7 @@ public class Guns : ScriptableObject
     public bool fullAuto = false;
     public bool tBurst = false;
     public bool fBurst = false;
+    public float zoom = 38.0f;
     public AudioClip shootingSound;
     public AudioClip emptySound;
 }

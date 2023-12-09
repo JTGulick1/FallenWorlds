@@ -32,7 +32,10 @@ public class PlayerController: MonoBehaviour
     private Transform camTransform;
     private GameManager gameManager;
     private PlayerInfoManager playerInfoManager;
+    public GameObject cBrain;
     public GameObject inventory;
+    private bool curBool = true;
+    private GunController GC;
 
     private void Start()
     {
@@ -41,8 +44,10 @@ public class PlayerController: MonoBehaviour
         inputManager = InputManager.Instance;
         camTransform = Camera.main.transform;
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        GC = GetComponent<GunController>();
         inventory = GameObject.FindGameObjectWithTag("inGameInv");
         inventory.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
@@ -94,11 +99,17 @@ public class PlayerController: MonoBehaviour
         {
             if (inventory.activeSelf == true)
             {
+                LockC();
+                GC.StopFire();
+                cBrain.SetActive(true);
                 inventory.SetActive(false);
                 return;
             }
             if (inventory.activeSelf == false)
             {
+                LockC();
+                GC.StopFire();
+                cBrain.SetActive(false);
                 inventory.SetActive(true);
                 return;
             }
@@ -125,6 +136,26 @@ public class PlayerController: MonoBehaviour
 
         playerVelocity.y += (gravityValue * Time.deltaTime) * 2;
         controller.Move(playerVelocity * Time.deltaTime);
+
+        if (inputManager.Cursor())
+        {
+            LockC();
+        }
+    }
+
+    public void LockC(){
+        if (curBool == true)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            curBool = false;
+            return;
+        }
+        if (curBool == false)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            curBool = true;
+            return;
+        }
     }
 
     public void ChangeSpeed(int speed, int Sprinting)

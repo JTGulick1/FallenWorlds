@@ -27,4 +27,5 @@ public class Item : ScriptableObject
     public int hydration;
     public int hunger;
     public int energy;
+    public int shards;
 }

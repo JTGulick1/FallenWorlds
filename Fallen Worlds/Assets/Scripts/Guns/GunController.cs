@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Cinemachine;
 public class GunController : MonoBehaviour
 {
     public Guns primaryGun;
@@ -16,6 +16,8 @@ public class GunController : MonoBehaviour
     private PlayerInfoManager playerInfoManager;
     private GunRaycast gunRaycast;
 
+    public CinemachineVirtualCamera vCamera;
+
     private int ammoInClipPrimary;
     private int spareAmmoPrimary;
     private int ammoInClipSecondary;
@@ -26,6 +28,8 @@ public class GunController : MonoBehaviour
     private float timer = 0.0f;
     private float cooldown = 0.0f;
     private int bulletTick;
+
+    private bool fireTick = true;
 
     public AudioSource gunSound;
 
@@ -45,13 +49,13 @@ public class GunController : MonoBehaviour
     {
         timer += Time.deltaTime;
         cooldown += Time.deltaTime;
-        if (inputManager.Fire() == true && ammoInClipPrimary != 0 && timer > primaryGun.fireRate && cooldown > primaryGun.burstCooldown)
+        if (inputManager.Fire() == true && ammoInClipPrimary != 0 && timer > primaryGun.fireRate && cooldown > primaryGun.burstCooldown && fireTick == true)
         {
             gunSound.clip = primaryGun.shootingSound;
             gunSound.Play();
             FireGun();
         }
-        if (inputManager.Fire() == true && ammoInClipPrimary == 0 && timer > primaryGun.fireRate && cooldown > primaryGun.burstCooldown)
+        if (inputManager.Fire() == true && ammoInClipPrimary == 0 && timer > primaryGun.fireRate && cooldown > primaryGun.burstCooldown && fireTick == true)
         {
             gunSound.clip = primaryGun.emptySound;
             gunSound.Play();
@@ -77,6 +81,14 @@ public class GunController : MonoBehaviour
         if (inputManager.Reload() == true)
         {
             Reload();
+        }
+        if (inputManager.ADS())
+        {
+            vCamera.m_Lens.FieldOfView = primaryGun.zoom;
+        }
+        if (inputManager.ADS() == false)
+        {
+            vCamera.m_Lens.FieldOfView = 60.0f;
         }
     }
 
@@ -180,6 +192,20 @@ public class GunController : MonoBehaviour
                 cooldown = 0.0f;
                 bulletTick = 0;
             }
+            return;
+        }
+    }
+
+    public void StopFire()
+    {
+        if (fireTick == true)
+        {
+            fireTick = false;
+            return;
+        }
+        if (fireTick == false)
+        {
+            fireTick = true;
             return;
         }
     }
