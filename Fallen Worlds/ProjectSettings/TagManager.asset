@@ -20,6 +20,7 @@ TagManager:
   - GainedTXT
   - CraftingCanvas
   - Jav
+  - MenuAC
   layers:
   - Default
   - TransparentFX
