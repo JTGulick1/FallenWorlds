@@ -13,6 +13,7 @@ public class Itembar : MonoBehaviour
     public int hydration;
     public int hunger;
     public int energy;
+    public int shards;
 
     public Item currentItem;
     private InvCanvas inv;
@@ -34,7 +35,8 @@ public class Itembar : MonoBehaviour
         hydration = item.hydration;
         hunger = item.hunger;
         energy = item.energy;
-        if (hydration != 0 || hunger != 0 || energy != 0)
+        shards = item.shards;
+        if (hydration != 0 || hunger != 0 || energy != 0 || shards != 0)
         {
             consumeIMG.SetActive(true);
         }
@@ -46,6 +48,7 @@ public class Itembar : MonoBehaviour
         playerInfoManager.hydration += hydration;
         playerInfoManager.hunger += hunger;
         playerInfoManager.sleep += energy;
+        playerInfoManager.shards += shards;
         if (playerInfoManager.hydration >= 100)
             playerInfoManager.hydration = 100;
         if (playerInfoManager.hunger >= 100)
