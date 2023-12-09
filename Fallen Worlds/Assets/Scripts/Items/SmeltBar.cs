@@ -13,9 +13,12 @@ public class SmeltBar : MonoBehaviour
 
     public int slotNumber = 0;
 
+    private AudioSource click;
+
     private void Start()
     {
         craft = GameObject.FindGameObjectWithTag("CraftingCanvas").GetComponent<CraftingCanvas>();
+        click = GameObject.FindGameObjectWithTag("MenuAC").GetComponent<AudioSource>();
         playerInfoManager = PlayerInfoManager.Instance;
     }
 
@@ -27,6 +30,7 @@ public class SmeltBar : MonoBehaviour
 
     public void MoveToInv() //when the game ends
     {
+        click.Play();
         if (playerInfoManager.backpack.Contains(currentItem))
         {
             playerInfoManager.inverntory.Add(currentItem);
@@ -37,6 +41,7 @@ public class SmeltBar : MonoBehaviour
 
     public void DestroyObject(int tick) // Player removed the item from inv
     {
+        click.Play();
         if (playerInfoManager.inverntory.Contains(currentItem))
         {
             playerInfoManager.inverntory.Remove(currentItem);
@@ -53,6 +58,7 @@ public class SmeltBar : MonoBehaviour
 
     public void MoveToSlot()
     {
+        click.Play();
         if (craft.slot1 == null)
         {
             if (playerInfoManager.inverntory.Contains(currentItem))
@@ -87,6 +93,7 @@ public class SmeltBar : MonoBehaviour
 
     public void MoveBackToInv()
     {
+        click.Play();
         if (slotNumber == 1)
         {
             playerInfoManager.inverntory.Add(currentItem);

@@ -18,9 +18,12 @@ public class Itembar : MonoBehaviour
     private InvCanvas inv;
     private CraftingCanvas craft;
 
+    private AudioSource click;
+
     private void Start()
     {
         inv = GameObject.FindGameObjectWithTag("InvCanvas").GetComponent<InvCanvas>();
+        click = GameObject.FindGameObjectWithTag("MenuAC").GetComponent<AudioSource>();
         playerInfoManager = PlayerInfoManager.Instance;
     }
 
@@ -39,6 +42,7 @@ public class Itembar : MonoBehaviour
 
     public void Consume(int tick) // Use Item
     {
+        click.Play();
         playerInfoManager.hydration += hydration;
         playerInfoManager.hunger += hunger;
         playerInfoManager.sleep += energy;
@@ -64,6 +68,7 @@ public class Itembar : MonoBehaviour
 
     public void MoveToBag() // when the game starts
     {
+        click.Play();
         if (playerInfoManager.backpack.Count < 20 + (playerInfoManager.backpackLevel - 1))
         {
             if (playerInfoManager.inverntory.Contains(currentItem))
@@ -77,6 +82,7 @@ public class Itembar : MonoBehaviour
 
     public void MoveToInv() //when the game ends
     {
+        click.Play();
         if (playerInfoManager.backpack.Contains(currentItem))
         {
             playerInfoManager.inverntory.Add(currentItem);
@@ -87,6 +93,7 @@ public class Itembar : MonoBehaviour
 
     public void DestroyObject(int tick) // Player removed the item from inv
     {
+        click.Play();
         if (playerInfoManager.inverntory.Contains(currentItem))
         {
             playerInfoManager.inverntory.Remove(currentItem);
