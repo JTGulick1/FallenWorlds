@@ -17,7 +17,10 @@ MonoBehaviour:
   spareBullets: 280
   bulllet: {fileID: 8287771000947808528, guid: ffdbe6f9e75958147b45c27de58e39ed, type: 3}
   fireRate: 0.05
+  burstCooldown: 0
   falloff: 0.2
   fullAuto: 1
   tBurst: 0
   fBurst: 0
+  shootingSound: {fileID: 8300000, guid: 94de288e3b6e05c429b55427eb59a6e6, type: 3}
+  emptySound: {fileID: 8300000, guid: 6c4915271ada3864da5aff108ebf951e, type: 3}

@@ -107,7 +107,7 @@ public class PlayerController: MonoBehaviour
         if (groundedPlayer != true) // Fall Damage
         {
             offGroundTimer += Time.deltaTime;
-            if (offGroundTimer > 0.5f)
+            if (offGroundTimer > 0.75f)
             {
                 gravityDamage = offGroundTimer * 10.0f;
             }

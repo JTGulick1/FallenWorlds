@@ -27,6 +27,8 @@ public class GunController : MonoBehaviour
     private float cooldown = 0.0f;
     private int bulletTick;
 
+    public AudioSource gunSound;
+
     void Start()
     {
         playerInfoManager = PlayerInfoManager.Instance;
@@ -45,7 +47,14 @@ public class GunController : MonoBehaviour
         cooldown += Time.deltaTime;
         if (inputManager.Fire() == true && ammoInClipPrimary != 0 && timer > primaryGun.fireRate && cooldown > primaryGun.burstCooldown)
         {
+            gunSound.clip = primaryGun.shootingSound;
+            gunSound.Play();
             FireGun();
+        }
+        if (inputManager.Fire() == true && ammoInClipPrimary == 0 && timer > primaryGun.fireRate && cooldown > primaryGun.burstCooldown)
+        {
+            gunSound.clip = primaryGun.emptySound;
+            gunSound.Play();
         }
         if (Input.GetAxis("Mouse ScrollWheel") >= 0.1 || Input.GetAxis("Mouse ScrollWheel") <= -0.1) //Changing gun logic
         {
