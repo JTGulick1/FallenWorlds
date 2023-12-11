@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8197d0c0202ad88449482b14360685e1, type: 3}
-  m_Name: Sniper
+  m_Name: Smith and Wesson
   m_EditorClassIdentifier: 
-  damage: 50
-  magSize: 4
-  spareBullets: 32
-  bulllet: {fileID: 0}
+  damage: 35
+  magSize: 8
+  spareBullets: 64
+  bulllet: {fileID: 8287771000947808528, guid: ffdbe6f9e75958147b45c27de58e39ed, type: 3}
   fireRate: 0
   burstCooldown: 0
-  falloff: 3
+  falloff: 0.3
   fullAuto: 0
   tBurst: 0
   fBurst: 0
-  zoom: 52
+  zoom: 38
   shootingSound: {fileID: 8300000, guid: 94de288e3b6e05c429b55427eb59a6e6, type: 3}
   emptySound: {fileID: 8300000, guid: 6c4915271ada3864da5aff108ebf951e, type: 3}
