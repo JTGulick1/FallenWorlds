@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8197d0c0202ad88449482b14360685e1, type: 3}
   m_Name: Smith and Wesson
   m_EditorClassIdentifier: 
+  gunPrefab: {fileID: 7957732908797168615, guid: dd97aa86bd701d143b0c9c24a076d057,
+    type: 3}
   damage: 35
   magSize: 8
   spareBullets: 64

@@ -5029,17 +5029,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 173705582172475685, guid: 8798772d1ca51134d93df2896eface37,
-        type: 3}
-      propertyPath: primaryGun
-      value: 
-      objectReference: {fileID: 11400000, guid: be00d4f636d6fec49abb5cadc7c60a17,
-        type: 2}
-    - target: {fileID: 173705582172475685, guid: 8798772d1ca51134d93df2896eface37,
-        type: 3}
-      propertyPath: secondaryGun
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8798772d1ca51134d93df2896eface37, type: 3}
 --- !u!4 &227169302472410544

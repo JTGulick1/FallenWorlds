@@ -6,9 +6,15 @@ public class GunController : MonoBehaviour
 {
     public Guns primaryGun;
     public Guns secondaryGun;
+    public Guns startingGun;
+    public GameObject blank;
+    public GameObject primaryGunModel;
+    public GameObject secondaryGunModel;
     private Guns tempGun;
+    private GameObject tempGunModel;
     private InputManager inputManager;
     public Transform shootFrom;
+    public Transform gunFrom;
     public GameObject bullet;
     public ParticleSystem gunflare;
     private GameObject mostRecentBullet;
@@ -25,6 +31,7 @@ public class GunController : MonoBehaviour
     private int tempAmmo;
     private int tempSpare;
 
+
     private float timer = 0.0f;
     private float cooldown = 0.0f;
     private int bulletTick;
@@ -37,12 +44,15 @@ public class GunController : MonoBehaviour
     {
         playerInfoManager = PlayerInfoManager.Instance;
         inputManager = InputManager.Instance;
+        primaryGun = startingGun;
         inputManager.auto = primaryGun.fullAuto;
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         gunRaycast = GetComponentInChildren<GunRaycast>();
         ammoInClipPrimary = primaryGun.magSize;
         spareAmmoPrimary = primaryGun.spareBullets + (playerInfoManager.weoponsLevel - 1) * (ammoInClipPrimary / 4);
         gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
+        secondaryGunModel = blank;
+        CreateGuns();
     }
 
     void Update()
@@ -62,21 +72,7 @@ public class GunController : MonoBehaviour
         }
         if (Input.GetAxis("Mouse ScrollWheel") >= 0.1 || Input.GetAxis("Mouse ScrollWheel") <= -0.1) //Changing gun logic
         {
-            tempGun = primaryGun;
-            primaryGun = secondaryGun;
-            secondaryGun = tempGun;
-
-            tempAmmo = ammoInClipPrimary;
-            ammoInClipPrimary = ammoInClipSecondary;
-            ammoInClipSecondary = tempAmmo;
-
-            tempSpare = spareAmmoPrimary;
-            spareAmmoPrimary = spareAmmoSecondary;
-            spareAmmoSecondary = tempSpare;
-
-            gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
-
-            inputManager.auto = primaryGun.fullAuto;
+            ChangeGuns();
         }
         if (inputManager.Reload() == true)
         {
@@ -97,6 +93,7 @@ public class GunController : MonoBehaviour
         primaryGun = gun;
         ammoInClipPrimary = gun.magSize;
         spareAmmoPrimary = gun.spareBullets;
+        CreateGuns();
     }
 
     private void Reload() // Reloading logic
@@ -208,5 +205,40 @@ public class GunController : MonoBehaviour
             fireTick = true;
             return;
         }
+    }
+
+    public void CreateGuns()
+    {
+        Destroy(primaryGunModel);
+        if (primaryGun.gunPrefab != primaryGunModel)
+        {
+            primaryGunModel = primaryGun.gunPrefab;
+            primaryGunModel = Instantiate(primaryGunModel, gunFrom.transform);
+        }
+        primaryGunModel.SetActive(true);
+    }
+    public void ChangeGuns()
+    {
+        tempGun = primaryGun;
+        primaryGun = secondaryGun;
+        secondaryGun = tempGun;
+
+        tempAmmo = ammoInClipPrimary;
+        ammoInClipPrimary = ammoInClipSecondary;
+        ammoInClipSecondary = tempAmmo;
+
+        tempSpare = spareAmmoPrimary;
+        spareAmmoPrimary = spareAmmoSecondary;
+        spareAmmoSecondary = tempSpare;
+
+        tempGunModel = primaryGunModel;
+        primaryGunModel = secondaryGunModel;
+        secondaryGunModel = tempGunModel;
+        primaryGunModel.SetActive(true);
+        secondaryGunModel.SetActive(false);
+
+        gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
+
+        inputManager.auto = primaryGun.fullAuto;
     }
 }

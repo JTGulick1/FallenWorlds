@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Guns : ScriptableObject
 {
     //public Image gunImage;
+    public GameObject gunPrefab;
     [Header("Base Gun Stats")]
     public float damage;
     public int magSize;
