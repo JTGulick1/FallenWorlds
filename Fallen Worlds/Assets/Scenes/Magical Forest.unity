@@ -15465,6 +15465,11 @@ PrefabInstance:
         type: 3}
       propertyPath: primaryGun
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 173705582172475685, guid: 8798772d1ca51134d93df2896eface37,
+        type: 3}
+      propertyPath: startingGun
+      value: 
       objectReference: {fileID: 11400000, guid: 02c2b6e2a947291499b5222ebe937f34,
         type: 2}
     - target: {fileID: 173705582172475685, guid: 8798772d1ca51134d93df2896eface37,

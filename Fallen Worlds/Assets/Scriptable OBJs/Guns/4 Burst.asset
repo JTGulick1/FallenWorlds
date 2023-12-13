@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8197d0c0202ad88449482b14360685e1, type: 3}
   m_Name: 4 Burst
   m_EditorClassIdentifier: 
+  gunPrefab: {fileID: 7957732908797168615, guid: dd97aa86bd701d143b0c9c24a076d057,
+    type: 3}
   damage: 15
   magSize: 32
   spareBullets: 192
@@ -22,5 +24,6 @@ MonoBehaviour:
   fullAuto: 1
   tBurst: 0
   fBurst: 1
+  zoom: 38
   shootingSound: {fileID: 8300000, guid: 94de288e3b6e05c429b55427eb59a6e6, type: 3}
   emptySound: {fileID: 8300000, guid: 6c4915271ada3864da5aff108ebf951e, type: 3}
