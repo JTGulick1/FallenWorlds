@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8197d0c0202ad88449482b14360685e1, type: 3}
-  m_Name: Bow and Arrows
+  m_Name: Assault Rifle
   m_EditorClassIdentifier: 
   gunPrefab: {fileID: 7957732908797168615, guid: dd97aa86bd701d143b0c9c24a076d057,
     type: 3}
-  damage: 50
-  magSize: 1
-  spareBullets: 30
-  bulllet: {fileID: 8287771000947808528, guid: f4430ab49add3ac4e9e52296991a73d5, type: 3}
-  fireRate: 0
+  damage: 25
+  magSize: 30
+  spareBullets: 300
+  bulllet: {fileID: 8287771000947808528, guid: ffdbe6f9e75958147b45c27de58e39ed, type: 3}
+  fireRate: 0.1
   burstCooldown: 0
-  falloff: 5
-  fullAuto: 0
+  falloff: 1
+  fullAuto: 1
   tBurst: 0
   fBurst: 0
   zoom: 38
