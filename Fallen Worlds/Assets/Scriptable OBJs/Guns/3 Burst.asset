@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8197d0c0202ad88449482b14360685e1, type: 3}
   m_Name: 3 Burst
   m_EditorClassIdentifier: 
-  gunPrefab: {fileID: 7957732908797168615, guid: dd97aa86bd701d143b0c9c24a076d057,
+  gunPrefab: {fileID: 5386790699498895658, guid: 2a9ec1778aa905b4d9cbfafacddf488b,
     type: 3}
   damage: 20
   magSize: 21

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8197d0c0202ad88449482b14360685e1, type: 3}
   m_Name: DMR
   m_EditorClassIdentifier: 
-  gunPrefab: {fileID: 7957732908797168615, guid: dd97aa86bd701d143b0c9c24a076d057,
+  gunPrefab: {fileID: 3619835688758865746, guid: dadc49c3b28f1c44db9182a21e074f24,
     type: 3}
   damage: 30
   magSize: 12

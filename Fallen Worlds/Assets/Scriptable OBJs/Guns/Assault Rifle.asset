@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8197d0c0202ad88449482b14360685e1, type: 3}
   m_Name: Assault Rifle
   m_EditorClassIdentifier: 
-  gunPrefab: {fileID: 7957732908797168615, guid: dd97aa86bd701d143b0c9c24a076d057,
+  gunPrefab: {fileID: 286714759258498768, guid: 229ba5a99e6015b40bc2981cf12a8472,
     type: 3}
   damage: 25
   magSize: 30
