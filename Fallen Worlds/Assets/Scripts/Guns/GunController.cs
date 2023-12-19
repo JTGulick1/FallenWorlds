@@ -150,7 +150,7 @@ public class GunController : MonoBehaviour
         {
             gunflare.Play();
             gunRaycast.FireRaycast();
-            mostRecentBullet = Instantiate(bullet, shootFrom.transform.position, shootFrom.transform.rotation);
+            mostRecentBullet = Instantiate(primaryGun.bullet, shootFrom.transform.position, shootFrom.transform.rotation);
             mostRecentBullet.GetComponent<Bullet>().falloff = primaryGun.falloff;
             ammoInClipPrimary--;
             gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
@@ -161,7 +161,7 @@ public class GunController : MonoBehaviour
         {
             gunflare.Play();
             gunRaycast.FireRaycast();
-            mostRecentBullet = Instantiate(bullet, shootFrom.transform.position, shootFrom.transform.rotation);
+            mostRecentBullet = Instantiate(primaryGun.bullet, shootFrom.transform.position, shootFrom.transform.rotation);
             mostRecentBullet.GetComponent<Bullet>().falloff = primaryGun.falloff;
             ammoInClipPrimary--;
             gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);
@@ -178,7 +178,7 @@ public class GunController : MonoBehaviour
         {
             gunflare.Play();
             gunRaycast.FireRaycast();
-            mostRecentBullet = Instantiate(bullet, shootFrom.transform.position, shootFrom.transform.rotation);
+            mostRecentBullet = Instantiate(primaryGun.bullet, shootFrom.transform.position, shootFrom.transform.rotation);
             mostRecentBullet.GetComponent<Bullet>().falloff = primaryGun.falloff;
             ammoInClipPrimary--;
             gm.SetAmmoCount(ammoInClipPrimary, spareAmmoPrimary);

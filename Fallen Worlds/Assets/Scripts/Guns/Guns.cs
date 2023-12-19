@@ -12,7 +12,7 @@ public class Guns : ScriptableObject
     public float damage;
     public int magSize;
     public int spareBullets;
-    public GameObject bulllet;
+    public GameObject bullet;
     [Header("Rate Of Fire")]
     [Tooltip("Only for full auto or burst gun, Leave 0 if it is none")]
     public float fireRate;
