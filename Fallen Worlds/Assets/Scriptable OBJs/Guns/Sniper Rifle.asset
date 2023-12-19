@@ -24,6 +24,6 @@ MonoBehaviour:
   fullAuto: 0
   tBurst: 0
   fBurst: 0
-  zoom: 52
+  zoom: 12
   shootingSound: {fileID: 8300000, guid: 94de288e3b6e05c429b55427eb59a6e6, type: 3}
   emptySound: {fileID: 8300000, guid: 6c4915271ada3864da5aff108ebf951e, type: 3}

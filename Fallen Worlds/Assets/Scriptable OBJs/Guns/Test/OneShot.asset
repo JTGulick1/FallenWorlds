@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8197d0c0202ad88449482b14360685e1, type: 3}
   m_Name: OneShot
   m_EditorClassIdentifier: 
-  gunPrefab: {fileID: 7957732908797168615, guid: dd97aa86bd701d143b0c9c24a076d057,
+  gunPrefab: {fileID: 3890986308338883911, guid: 88cb9f4b2297b4a4d8d2fa3f19f99023,
     type: 3}
   damage: 99999
   magSize: 99999

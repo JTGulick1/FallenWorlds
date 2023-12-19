@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8197d0c0202ad88449482b14360685e1, type: 3}
   m_Name: Iron Sights Sniper
   m_EditorClassIdentifier: 
-  gunPrefab: {fileID: 1209685387009477806, guid: 11ac5f5c9e46e8044b432fddd41d715e,
-    type: 3}
+  gunPrefab: {fileID: 49847397166880333, guid: 66712712ce4d6b5499b0d65554eb91ab, type: 3}
   damage: 50
   magSize: 4
   spareBullets: 32

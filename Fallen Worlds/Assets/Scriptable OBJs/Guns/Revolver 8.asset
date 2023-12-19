@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8197d0c0202ad88449482b14360685e1, type: 3}
   m_Name: Revolver 8
   m_EditorClassIdentifier: 
-  gunPrefab: {fileID: 8348428664905502255, guid: b07499ee1dc2ae443bd9752cf3ad73ba,
+  gunPrefab: {fileID: 2888597222329070263, guid: b07499ee1dc2ae443bd9752cf3ad73ba,
     type: 3}
   damage: 35
   magSize: 8

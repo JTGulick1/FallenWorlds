@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8197d0c0202ad88449482b14360685e1, type: 3}
   m_Name: Master Wand
   m_EditorClassIdentifier: 
-  gunPrefab: {fileID: 7957732908797168615, guid: dd97aa86bd701d143b0c9c24a076d057,
+  gunPrefab: {fileID: 7334683078062626388, guid: 2f95dfd03e3eb194b8ad3c40ab7edefb,
     type: 3}
   damage: 100
   magSize: 3
