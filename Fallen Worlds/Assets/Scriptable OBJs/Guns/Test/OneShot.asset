@@ -17,7 +17,7 @@ MonoBehaviour:
   damage: 99999
   magSize: 99999
   spareBullets: 99999
-  bullet: {fileID: 7120052046138479620, guid: 721e7e5dec2de6e4c891d92f7bb3449c, type: 3}
+  bullet: {fileID: 6680618005563462656, guid: 4889da1558be27242ae9a6ab9d8bd82b, type: 3}
   fireRate: 0
   burstCooldown: 0
   falloff: 2
