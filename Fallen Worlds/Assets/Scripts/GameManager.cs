@@ -185,6 +185,7 @@ public class GameManager : MonoBehaviour
 
         if (playerIsNoMore == true)
         {
+            Cursor.lockState = CursorLockMode.None;
             playerInfoManager.inGameTick = false;
             playerInfoManager.timer = 0.0f;
             doortxt.gameObject.SetActive(true);
