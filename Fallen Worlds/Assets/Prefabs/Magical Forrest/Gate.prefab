@@ -329,7 +329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6619395808577385050}
   m_Layer: 0
-  m_Name: Armory
+  m_Name: Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
