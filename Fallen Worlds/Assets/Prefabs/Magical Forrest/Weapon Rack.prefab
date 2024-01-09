@@ -494,6 +494,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2882522454160468336}
+  - component: {fileID: 8008802413456969536}
   m_Layer: 0
   m_Name: Weapon Rack
   m_TagString: Untagged
@@ -523,6 +524,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8008802413456969536
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2882522454160468339}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.63, y: 2.17, z: 3.23}
+  m_Center: {x: 0, y: 1.14, z: 0}
 --- !u!1 &2882522454201128592
 GameObject:
   m_ObjectHideFlags: 0
