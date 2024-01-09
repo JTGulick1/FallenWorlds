@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8197d0c0202ad88449482b14360685e1, type: 3}
+  m_Name: Sword
+  m_EditorClassIdentifier: 
+  gunPrefab: {fileID: 3416861830116772256, guid: 751d44d2df1e5ef43a59b4cc02ab2284,
+    type: 3}
+  damage: 0
+  magSize: 0
+  spareBullets: 0
+  bullet: {fileID: 0}
+  fireRate: 0
+  burstCooldown: 0
+  falloff: 0
+  fullAuto: 0
+  tBurst: 0
+  fBurst: 0
+  zoom: 38
+  shootingSound: {fileID: 0}
+  emptySound: {fileID: 0}
