@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6376975151460866669}
   - component: {fileID: 8057021682723739080}
   - component: {fileID: 5202992109238264066}
+  - component: {fileID: 1246896011284525654}
   m_Layer: 0
   m_Name: NightStand
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1246896011284525654
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5995489234799100119}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.010902244, y: 0.010500265, z: 0.014886182}
+  m_Center: {x: 0.00012740493, y: 6.984918e-10, z: 0.007450316}
