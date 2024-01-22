@@ -85,13 +85,8 @@ public class InputManager : MonoBehaviour
     {
         return inputActions.MouseKeyboard.ADS.IsPressed();
     }
-
-    public bool Cursor()
-    {
-        return inputActions.MouseKeyboard.LockUnlock.triggered;
-    }
     public bool SettingsMenu()
     {
-        return inputActions.MouseKeyboard.LockUnlock.triggered;
+        return inputActions.MouseKeyboard.SettingsMenu.triggered;
     }
 }

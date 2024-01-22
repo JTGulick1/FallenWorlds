@@ -120,22 +120,7 @@ public class PlayerController: MonoBehaviour
 
         if (inputManager.SettingsMenu() == true)
         {
-            if (settings.activeSelf == true)
-            {
-                LockC();
-                GC.StopFire();
-                cBrain.SetActive(true);
-                settings.SetActive(false);
-                return;
-            }
-            if (settings.activeSelf == false)
-            {
-                LockC();
-                GC.StopFire();
-                cBrain.SetActive(false);
-                settings.SetActive(true);
-                return;
-            }
+            SettMenu();
         }
 
         if (groundedPlayer != true) // Fall Damage
@@ -159,11 +144,6 @@ public class PlayerController: MonoBehaviour
 
         playerVelocity.y += (gravityValue * Time.deltaTime) * 2;
         controller.Move(playerVelocity * Time.deltaTime);
-
-        if (inputManager.Cursor())
-        {
-            LockC();
-        }
     }
 
     public void LockC(){
@@ -186,5 +166,25 @@ public class PlayerController: MonoBehaviour
         playerSpeed = speed;
         playerBaseSpeed = speed;
         sprintingSpeed = Sprinting;
+    }
+
+    public void SettMenu()
+    {
+        if (settings.activeSelf == true)
+        {
+            LockC();
+            GC.StopFire();
+            cBrain.SetActive(true);
+            settings.SetActive(false);
+            return;
+        }
+        if (settings.activeSelf == false)
+        {
+            LockC();
+            GC.StopFire();
+            cBrain.SetActive(false);
+            settings.SetActive(true);
+            return;
+        }
     }
 }
