@@ -44,12 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efba7c3153fb1646b4d32052d9a48b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inverntory:
-  - {fileID: 11400000, guid: b29088decb05bb844bc0907d5a05813b, type: 2}
-  - {fileID: 11400000, guid: 2b28c36c2b57ea34eab3aec3a4b010c9, type: 2}
+  inverntory: []
   backpack: []
   backpackCap: 20
-  shards: 0
+  playerLevel: 0
+  shards: 100
   hunger: 100
   hydration: 100
   sleep: 100

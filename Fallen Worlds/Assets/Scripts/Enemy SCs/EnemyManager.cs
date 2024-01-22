@@ -30,6 +30,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (health <= 0) // Check if its dead
         {
+            gm.GiveEXP(5);
             int spawnitem = Random.Range(0, 100);
             if (spawnitem == 38) // Spawn a Item
             {

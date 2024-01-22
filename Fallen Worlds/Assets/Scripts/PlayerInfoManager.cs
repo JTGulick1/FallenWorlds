@@ -10,11 +10,14 @@ public class PlayerInfoManager : MonoBehaviour
     public List<Item> backpack = new List<Item>();
     [SerializeField]
     private int backpackCap;
-
+    [Header("Player Stats")]
+    public int playerLevel = 1;
     public int shards;
     public int hunger;
     public int hydration;
     public int sleep;
+    public int playerEXP = 0;
+    public int playerEXPCap = 100;
 
     private GameManager gm;
 
@@ -106,6 +109,10 @@ public class PlayerInfoManager : MonoBehaviour
                 ET = false;
             }
         }
+        if (playerEXP >= playerEXPCap)
+        {
+            Promote();
+        }
     }
 
     public void FindGameManager()
@@ -149,5 +156,12 @@ public class PlayerInfoManager : MonoBehaviour
             items.Add(item);
         }
         backpack.Clear();
+    }
+
+    public void Promote()
+    {
+        playerLevel++;
+        playerEXP = playerEXP - playerEXPCap;
+        playerEXPCap = playerLevel * 53;
     }
 }

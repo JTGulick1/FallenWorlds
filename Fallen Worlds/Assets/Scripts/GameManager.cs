@@ -116,27 +116,28 @@ public class GameManager : MonoBehaviour
         }
         if (isclosetodoor == true && int.Parse(pointstxt.text) >= doorCost && inputManager.Interacted() == true && forShards == false)
         {
+            GiveEXP(25);
             RemovePoints(doorCost);
             OutOfDoorRange();
             Destroy(closestdoor);
         }
         if (isclosetodoor == true && playerInfoManager.shards >= doorCost && inputManager.Interacted() == true && forShards == true)
         {
+            GiveEXP(100);
             RemoveShards(doorCost);
             OutOfDoorRange();
             Destroy(closestdoor);
         }
-        if (isclosetoitemdoor == true && inputManager.Interacted() == true)
+        if (isclosetoitemdoor == true && inputManager.Interacted() == true && backpack.CheckForItem(item) == true)
         {
-            if (backpack.CheckForItem(item) == true)
-            {
-                OutOfDoorRange();
-                Destroy(closestdoor);
-            }
+            GiveEXP(75);
+            OutOfDoorRange();
+            Destroy(closestdoor);
         }
 
         if (isclosetoportal == true && int.Parse(pointstxt.text) >= portalCost - ((playerInfoManager.portalLevel - 1) * 100) && inputManager.Interacted() == true)
         {
+            GiveEXP(200);
             doortxt.gameObject.SetActive(true);
             gained.gameObject.SetActive(true);
             RemovePoints(portalCost);
@@ -151,11 +152,13 @@ public class GameManager : MonoBehaviour
         }
         if (isclosetobuy == true && int.Parse(pointstxt.text) >= buyCost && inputManager.Interacted() == true && gunController.primaryGun != tempWeopon && refuel == false)
         {
+            GiveEXP(15);
             gunController.BoughtWeopon(tempWeopon);
             RemovePoints(buyCost);
         }
         if (isclosetobuy == true && int.Parse(pointstxt.text) >= buyCost && inputManager.Interacted() == true && gunController.primaryGun == tempWeopon && refuel == true)
         {
+            GiveEXP(5);
             gunController.FullAmmo();
             RemovePoints(buyCost);
         }
@@ -408,6 +411,11 @@ public class GameManager : MonoBehaviour
     {
         closeToUpgrade = false;
         doortxt.gameObject.SetActive(false);
+    }
+
+    public void GiveEXP(int exp)
+    {
+        playerInfoManager.playerEXP += exp;
     }
 
     #endregion;

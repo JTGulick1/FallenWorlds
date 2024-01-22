@@ -13,6 +13,7 @@ public class NavCanvas : MonoBehaviour
     public TMPro.TMP_Text hunger;
     public TMPro.TMP_Text fatigue;
     public TMPro.TMP_Text shards;
+    public TMPro.TMP_Text playerLVL;
     private PlayerInfoManager playerInfoManager;
 
     private AudioSource click;
@@ -34,6 +35,7 @@ public class NavCanvas : MonoBehaviour
         hunger.text = "Hunger: " + playerInfoManager.hunger;
         fatigue.text = "Fatigue: " + playerInfoManager.sleep;
         shards.text = "Shards: " + playerInfoManager.shards;
+        playerLVL.text = "Player Level: " + playerInfoManager.playerLevel;
     }
 
     public void DrinkWater()
