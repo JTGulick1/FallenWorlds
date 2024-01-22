@@ -116,6 +116,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Settings Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""9ca5e94f-c37d-4a86-9b15-a08f2911cc6e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -272,6 +281,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""LockUnlock"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""127ffa73-f64f-4196-880c-55022e83eee6"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Settings Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -290,6 +310,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_MouseKeyboard_OpenInventory = m_MouseKeyboard.FindAction("OpenInventory", throwIfNotFound: true);
         m_MouseKeyboard_ADS = m_MouseKeyboard.FindAction("ADS", throwIfNotFound: true);
         m_MouseKeyboard_LockUnlock = m_MouseKeyboard.FindAction("LockUnlock", throwIfNotFound: true);
+        m_MouseKeyboard_SettingsMenu = m_MouseKeyboard.FindAction("Settings Menu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -359,6 +380,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_MouseKeyboard_OpenInventory;
     private readonly InputAction m_MouseKeyboard_ADS;
     private readonly InputAction m_MouseKeyboard_LockUnlock;
+    private readonly InputAction m_MouseKeyboard_SettingsMenu;
     public struct MouseKeyboardActions
     {
         private @PlayerControls m_Wrapper;
@@ -373,6 +395,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @OpenInventory => m_Wrapper.m_MouseKeyboard_OpenInventory;
         public InputAction @ADS => m_Wrapper.m_MouseKeyboard_ADS;
         public InputAction @LockUnlock => m_Wrapper.m_MouseKeyboard_LockUnlock;
+        public InputAction @SettingsMenu => m_Wrapper.m_MouseKeyboard_SettingsMenu;
         public InputActionMap Get() { return m_Wrapper.m_MouseKeyboard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -412,6 +435,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @LockUnlock.started -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnLockUnlock;
                 @LockUnlock.performed -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnLockUnlock;
                 @LockUnlock.canceled -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnLockUnlock;
+                @SettingsMenu.started -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnSettingsMenu;
+                @SettingsMenu.performed -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnSettingsMenu;
+                @SettingsMenu.canceled -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnSettingsMenu;
             }
             m_Wrapper.m_MouseKeyboardActionsCallbackInterface = instance;
             if (instance != null)
@@ -446,6 +472,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @LockUnlock.started += instance.OnLockUnlock;
                 @LockUnlock.performed += instance.OnLockUnlock;
                 @LockUnlock.canceled += instance.OnLockUnlock;
+                @SettingsMenu.started += instance.OnSettingsMenu;
+                @SettingsMenu.performed += instance.OnSettingsMenu;
+                @SettingsMenu.canceled += instance.OnSettingsMenu;
             }
         }
     }
@@ -462,5 +491,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnOpenInventory(InputAction.CallbackContext context);
         void OnADS(InputAction.CallbackContext context);
         void OnLockUnlock(InputAction.CallbackContext context);
+        void OnSettingsMenu(InputAction.CallbackContext context);
     }
 }

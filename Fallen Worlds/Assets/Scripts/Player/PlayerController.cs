@@ -34,6 +34,7 @@ public class PlayerController: MonoBehaviour
     private PlayerInfoManager playerInfoManager;
     public GameObject cBrain;
     public GameObject inventory;
+    public GameObject settings;
     private bool curBool = true;
     private GunController GC;
 
@@ -46,7 +47,9 @@ public class PlayerController: MonoBehaviour
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         GC = GetComponent<GunController>();
         inventory = GameObject.FindGameObjectWithTag("inGameInv");
+        settings = GameObject.FindGameObjectWithTag("inGameSett");
         inventory.SetActive(false);
+        settings.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -111,6 +114,26 @@ public class PlayerController: MonoBehaviour
                 GC.StopFire();
                 cBrain.SetActive(false);
                 inventory.SetActive(true);
+                return;
+            }
+        }
+
+        if (inputManager.SettingsMenu() == true)
+        {
+            if (settings.activeSelf == true)
+            {
+                LockC();
+                GC.StopFire();
+                cBrain.SetActive(true);
+                settings.SetActive(false);
+                return;
+            }
+            if (settings.activeSelf == false)
+            {
+                LockC();
+                GC.StopFire();
+                cBrain.SetActive(false);
+                settings.SetActive(true);
                 return;
             }
         }

@@ -21,6 +21,7 @@ TagManager:
   - CraftingCanvas
   - Jav
   - MenuAC
+  - inGameSett
   layers:
   - Default
   - TransparentFX

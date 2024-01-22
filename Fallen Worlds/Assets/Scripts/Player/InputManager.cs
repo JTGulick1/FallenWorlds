@@ -90,4 +90,8 @@ public class InputManager : MonoBehaviour
     {
         return inputActions.MouseKeyboard.LockUnlock.triggered;
     }
+    public bool SettingsMenu()
+    {
+        return inputActions.MouseKeyboard.LockUnlock.triggered;
+    }
 }
