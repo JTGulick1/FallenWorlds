@@ -109,16 +109,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""LockUnlock"",
-                    ""type"": ""Button"",
-                    ""id"": ""c9233df6-c670-4b0f-bf85-26f0170b54a1"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Settings Menu"",
+                    ""name"": ""SettingsMenu"",
                     ""type"": ""Button"",
                     ""id"": ""9ca5e94f-c37d-4a86-9b15-a08f2911cc6e"",
                     ""expectedControlType"": ""Button"",
@@ -273,23 +264,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""57631860-01ad-4837-9314-6df95670a3a3"",
-                    ""path"": ""<Keyboard>/backquote"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""LockUnlock"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""127ffa73-f64f-4196-880c-55022e83eee6"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Settings Menu"",
+                    ""action"": ""SettingsMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -309,8 +289,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_MouseKeyboard_Reload = m_MouseKeyboard.FindAction("Reload", throwIfNotFound: true);
         m_MouseKeyboard_OpenInventory = m_MouseKeyboard.FindAction("OpenInventory", throwIfNotFound: true);
         m_MouseKeyboard_ADS = m_MouseKeyboard.FindAction("ADS", throwIfNotFound: true);
-        m_MouseKeyboard_LockUnlock = m_MouseKeyboard.FindAction("LockUnlock", throwIfNotFound: true);
-        m_MouseKeyboard_SettingsMenu = m_MouseKeyboard.FindAction("Settings Menu", throwIfNotFound: true);
+        m_MouseKeyboard_SettingsMenu = m_MouseKeyboard.FindAction("SettingsMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -379,7 +358,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_MouseKeyboard_Reload;
     private readonly InputAction m_MouseKeyboard_OpenInventory;
     private readonly InputAction m_MouseKeyboard_ADS;
-    private readonly InputAction m_MouseKeyboard_LockUnlock;
     private readonly InputAction m_MouseKeyboard_SettingsMenu;
     public struct MouseKeyboardActions
     {
@@ -394,7 +372,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Reload => m_Wrapper.m_MouseKeyboard_Reload;
         public InputAction @OpenInventory => m_Wrapper.m_MouseKeyboard_OpenInventory;
         public InputAction @ADS => m_Wrapper.m_MouseKeyboard_ADS;
-        public InputAction @LockUnlock => m_Wrapper.m_MouseKeyboard_LockUnlock;
         public InputAction @SettingsMenu => m_Wrapper.m_MouseKeyboard_SettingsMenu;
         public InputActionMap Get() { return m_Wrapper.m_MouseKeyboard; }
         public void Enable() { Get().Enable(); }
@@ -432,9 +409,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ADS.started -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnADS;
                 @ADS.performed -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnADS;
                 @ADS.canceled -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnADS;
-                @LockUnlock.started -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnLockUnlock;
-                @LockUnlock.performed -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnLockUnlock;
-                @LockUnlock.canceled -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnLockUnlock;
                 @SettingsMenu.started -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnSettingsMenu;
                 @SettingsMenu.performed -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnSettingsMenu;
                 @SettingsMenu.canceled -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnSettingsMenu;
@@ -469,9 +443,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ADS.started += instance.OnADS;
                 @ADS.performed += instance.OnADS;
                 @ADS.canceled += instance.OnADS;
-                @LockUnlock.started += instance.OnLockUnlock;
-                @LockUnlock.performed += instance.OnLockUnlock;
-                @LockUnlock.canceled += instance.OnLockUnlock;
                 @SettingsMenu.started += instance.OnSettingsMenu;
                 @SettingsMenu.performed += instance.OnSettingsMenu;
                 @SettingsMenu.canceled += instance.OnSettingsMenu;
@@ -490,7 +461,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnReload(InputAction.CallbackContext context);
         void OnOpenInventory(InputAction.CallbackContext context);
         void OnADS(InputAction.CallbackContext context);
-        void OnLockUnlock(InputAction.CallbackContext context);
         void OnSettingsMenu(InputAction.CallbackContext context);
     }
 }
