@@ -5,11 +5,8 @@ using Cinemachine;
 
 public class CinemachinePOVEXT : CinemachineExtension
 {
-    [SerializeField]
-    private float horizontalSpeed = 10f;
-    [SerializeField]
-    private float verticalSpeed = 10f;
-    [SerializeField]
+    public float horizontalSpeed;
+    public float verticalSpeed;
     private float clampAngle = 80f;
 
     private InputManager inputManager;
