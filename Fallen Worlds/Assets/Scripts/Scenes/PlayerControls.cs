@@ -274,9 +274,27 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Remapping"",
+            ""id"": ""ed27fb5d-7d64-42ae-b5f0-46d570febd72"",
+            ""actions"": [],
+            ""bindings"": []
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Both"",
+            ""bindingGroup"": ""Both"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // Mouse+Keyboard
         m_MouseKeyboard = asset.FindActionMap("Mouse+Keyboard", throwIfNotFound: true);
@@ -290,6 +308,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_MouseKeyboard_OpenInventory = m_MouseKeyboard.FindAction("OpenInventory", throwIfNotFound: true);
         m_MouseKeyboard_ADS = m_MouseKeyboard.FindAction("ADS", throwIfNotFound: true);
         m_MouseKeyboard_SettingsMenu = m_MouseKeyboard.FindAction("SettingsMenu", throwIfNotFound: true);
+        // Remapping
+        m_Remapping = asset.FindActionMap("Remapping", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -450,6 +470,40 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     }
     public MouseKeyboardActions @MouseKeyboard => new MouseKeyboardActions(this);
+
+    // Remapping
+    private readonly InputActionMap m_Remapping;
+    private IRemappingActions m_RemappingActionsCallbackInterface;
+    public struct RemappingActions
+    {
+        private @PlayerControls m_Wrapper;
+        public RemappingActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputActionMap Get() { return m_Wrapper.m_Remapping; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(RemappingActions set) { return set.Get(); }
+        public void SetCallbacks(IRemappingActions instance)
+        {
+            if (m_Wrapper.m_RemappingActionsCallbackInterface != null)
+            {
+            }
+            m_Wrapper.m_RemappingActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+            }
+        }
+    }
+    public RemappingActions @Remapping => new RemappingActions(this);
+    private int m_BothSchemeIndex = -1;
+    public InputControlScheme BothScheme
+    {
+        get
+        {
+            if (m_BothSchemeIndex == -1) m_BothSchemeIndex = asset.FindControlSchemeIndex("Both");
+            return asset.controlSchemes[m_BothSchemeIndex];
+        }
+    }
     public interface IMouseKeyboardActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -462,5 +516,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnOpenInventory(InputAction.CallbackContext context);
         void OnADS(InputAction.CallbackContext context);
         void OnSettingsMenu(InputAction.CallbackContext context);
+    }
+    public interface IRemappingActions
+    {
     }
 }

@@ -23,6 +23,7 @@ TagManager:
   - MenuAC
   - inGameSett
   - CamHolder
+  - remapCan
   layers:
   - Default
   - TransparentFX

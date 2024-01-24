@@ -14,6 +14,7 @@ public class SettingsCanvas : MonoBehaviour
     public Slider Vsen;
     public Slider Hsen;
     private CinemachinePOVEXT pOVEXT;
+    public GameObject remappingCanvas;
     private void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -40,5 +41,15 @@ public class SettingsCanvas : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+    public void RemapCanvas()
+    {
+        remappingCanvas.SetActive(true);
+        this.gameObject.SetActive(false);
+    }
+    public void SettCanvas()
+    {
+        remappingCanvas.SetActive(false);
+        this.gameObject.SetActive(true);
     }
 }

@@ -252,7 +252,25 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Remapping",
+            "id": "ed27fb5d-7d64-42ae-b5f0-46d570febd72",
+            "actions": [],
+            "bindings": []
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Both",
+            "bindingGroup": "Both",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }

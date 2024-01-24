@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 [RequireComponent(typeof(CharacterController))]
@@ -16,7 +17,8 @@ public class PlayerController: MonoBehaviour
     private float gravityValue = -9.81f;
     private float gravityDamage = 0f;
     private float offGroundTimer = 0f;
-    
+    public PlayerInput playerInput = null;
+
     private float playerBaseSpeed = 6.0f;
     private float sprintingSpeed = 12.0f;
 
@@ -28,15 +30,18 @@ public class PlayerController: MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
-    private InputManager inputManager;
+    public InputManager inputManager;
     private Transform camTransform;
     private GameManager gameManager;
     private PlayerInfoManager playerInfoManager;
     public GameObject cBrain;
-    public GameObject inventory;
-    public GameObject settings;
+    private GameObject inventory;
+    private GameObject settings;
+    private GameObject remap;
     private bool curBool = true;
     private GunController GC;
+
+    public PlayerInput PlayerInput => playerInput;
 
     private void Start()
     {
@@ -48,9 +53,12 @@ public class PlayerController: MonoBehaviour
         GC = GetComponent<GunController>();
         inventory = GameObject.FindGameObjectWithTag("inGameInv");
         settings = GameObject.FindGameObjectWithTag("inGameSett");
+        remap = GameObject.FindGameObjectWithTag("remapCan");
         inventory.SetActive(false);
         settings.SetActive(false);
+        remap.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
+        playerInput = GetComponent<PlayerInput>();
     }
 
     void Update()
