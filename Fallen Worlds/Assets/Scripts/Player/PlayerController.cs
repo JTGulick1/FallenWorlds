@@ -40,7 +40,8 @@ public class PlayerController: MonoBehaviour
     private GameObject remap;
     private bool curBool = true;
     private GunController GC;
-
+    public GameObject meleeBall;
+    public float meleeReset = 0.0f;
     public PlayerInput PlayerInput => playerInput;
 
     private void Start()
@@ -57,6 +58,7 @@ public class PlayerController: MonoBehaviour
         inventory.SetActive(false);
         settings.SetActive(false);
         remap.SetActive(false);
+        meleeBall.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         playerInput = GetComponent<PlayerInput>();
     }
@@ -126,6 +128,19 @@ public class PlayerController: MonoBehaviour
             }
         }
 
+        if (meleeReset <= 1.0f)
+        {
+            meleeReset += Time.deltaTime;
+        }
+        if (meleeReset >= 0.1f && meleeBall.activeSelf)
+        {
+            meleeBall.SetActive(false);
+        }
+        if (inputManager.Melee() == true && meleeReset >= 1.0f)
+        {
+            Melee();
+        }
+
         if (inputManager.SettingsMenu() == true)
         {
             SettMenu();
@@ -152,6 +167,14 @@ public class PlayerController: MonoBehaviour
 
         playerVelocity.y += (gravityValue * Time.deltaTime) * 2;
         controller.Move(playerVelocity * Time.deltaTime);
+    }
+
+    public void Melee()
+    {
+        //Melee Sound
+        //Melee Animation
+        meleeBall.SetActive(true);
+        meleeReset = 0.0f;
     }
 
     public void LockC(){

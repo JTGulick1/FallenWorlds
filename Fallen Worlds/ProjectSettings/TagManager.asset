@@ -24,6 +24,7 @@ TagManager:
   - inGameSett
   - CamHolder
   - remapCan
+  - Melee
   layers:
   - Default
   - TransparentFX

@@ -116,6 +116,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Melee"",
+                    ""type"": ""Button"",
+                    ""id"": ""111c7f7a-55ff-49bb-b202-e0e8249818b1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -272,6 +281,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""SettingsMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b639f92e-1ce1-4ea1-9496-5ddd5b476d8a"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Melee"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -313,6 +333,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_MouseKeyboard_OpenInventory = m_MouseKeyboard.FindAction("OpenInventory", throwIfNotFound: true);
         m_MouseKeyboard_ADS = m_MouseKeyboard.FindAction("ADS", throwIfNotFound: true);
         m_MouseKeyboard_SettingsMenu = m_MouseKeyboard.FindAction("SettingsMenu", throwIfNotFound: true);
+        m_MouseKeyboard_Melee = m_MouseKeyboard.FindAction("Melee", throwIfNotFound: true);
         // Remapping
         m_Remapping = asset.FindActionMap("Remapping", throwIfNotFound: true);
     }
@@ -384,6 +405,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_MouseKeyboard_OpenInventory;
     private readonly InputAction m_MouseKeyboard_ADS;
     private readonly InputAction m_MouseKeyboard_SettingsMenu;
+    private readonly InputAction m_MouseKeyboard_Melee;
     public struct MouseKeyboardActions
     {
         private @PlayerControls m_Wrapper;
@@ -398,6 +420,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @OpenInventory => m_Wrapper.m_MouseKeyboard_OpenInventory;
         public InputAction @ADS => m_Wrapper.m_MouseKeyboard_ADS;
         public InputAction @SettingsMenu => m_Wrapper.m_MouseKeyboard_SettingsMenu;
+        public InputAction @Melee => m_Wrapper.m_MouseKeyboard_Melee;
         public InputActionMap Get() { return m_Wrapper.m_MouseKeyboard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -437,6 +460,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @SettingsMenu.started -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnSettingsMenu;
                 @SettingsMenu.performed -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnSettingsMenu;
                 @SettingsMenu.canceled -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnSettingsMenu;
+                @Melee.started -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnMelee;
+                @Melee.performed -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnMelee;
+                @Melee.canceled -= m_Wrapper.m_MouseKeyboardActionsCallbackInterface.OnMelee;
             }
             m_Wrapper.m_MouseKeyboardActionsCallbackInterface = instance;
             if (instance != null)
@@ -471,6 +497,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @SettingsMenu.started += instance.OnSettingsMenu;
                 @SettingsMenu.performed += instance.OnSettingsMenu;
                 @SettingsMenu.canceled += instance.OnSettingsMenu;
+                @Melee.started += instance.OnMelee;
+                @Melee.performed += instance.OnMelee;
+                @Melee.canceled += instance.OnMelee;
             }
         }
     }
@@ -521,6 +550,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnOpenInventory(InputAction.CallbackContext context);
         void OnADS(InputAction.CallbackContext context);
         void OnSettingsMenu(InputAction.CallbackContext context);
+        void OnMelee(InputAction.CallbackContext context);
     }
     public interface IRemappingActions
     {

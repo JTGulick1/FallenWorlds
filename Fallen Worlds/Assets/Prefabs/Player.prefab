@@ -1,5 +1,64 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &368530067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 368530068}
+  - component: {fileID: 368530069}
+  - component: {fileID: 173705582952356411}
+  m_Layer: 0
+  m_Name: Melee Ball
+  m_TagString: Melee
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &368530068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368530067}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1.028}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 173705582172475680}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &368530069
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368530067}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &173705582952356411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368530067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a83a7f8e7e054b54cb69bac30e743266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &173705582172475681
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,6 +99,7 @@ Transform:
   - {fileID: 173705583089963466}
   - {fileID: 8821758958844810516}
   - {fileID: 8821758960451240719}
+  - {fileID: 368530068}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -82,6 +142,7 @@ MonoBehaviour:
   timer: 0
   inputManager: {fileID: 0}
   cBrain: {fileID: 8821758960451240716}
+  meleeBall: {fileID: 368530067}
 --- !u!114 &173705582172475685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,9 +373,13 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9ca5e94f-c37d-4a86-9b15-a08f2911cc6e
     m_ActionName: Mouse+Keyboard/SettingsMenu[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 111c7f7a-55ff-49bb-b202-e0e8249818b1
+    m_ActionName: MouseKeyboard/Melee[/Keyboard/v]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Mouse+Keyboard
+  m_DefaultActionMap: MouseKeyboard
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &173705582807903665

@@ -13,6 +13,7 @@ public class EnemyManager : MonoBehaviour
     private PlayerController target;
     public NavMeshAgent meshAgent;
     public GameObject item;
+    private float attackTimer;
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
@@ -28,6 +29,10 @@ public class EnemyManager : MonoBehaviour
 
     void Update()
     {
+        if (attackTimer < 3.0f)
+        {
+            attackTimer += Time.deltaTime;
+        }
         if (health <= 0) // Check if its dead
         {
             gm.GiveEXP(5);
@@ -47,9 +52,10 @@ public class EnemyManager : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other) //Attacking player
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && attackTimer >= 3.0f)
         {
             target.timer = 0.0f;
+            attackTimer = 0.0f;
             target.playersHealth -= 10.0f;
         }
     }

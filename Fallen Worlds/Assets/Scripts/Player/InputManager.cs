@@ -89,4 +89,8 @@ public class InputManager : MonoBehaviour
     {
         return inputActions.MouseKeyboard.SettingsMenu.triggered;
     }
+    public bool Melee()
+    {
+        return inputActions.MouseKeyboard.Melee.triggered;
+    }
 }
