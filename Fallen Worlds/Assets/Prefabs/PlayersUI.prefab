@@ -4900,7 +4900,6 @@ MonoBehaviour:
     type: 3}
   playerController: {fileID: 0}
   bindingDisplayNameText: {fileID: 277094117}
-  startRebindObject: {fileID: 2022585155}
   waitingForInputObject: {fileID: 1080207451}
 --- !u!1 &1680370917
 GameObject:

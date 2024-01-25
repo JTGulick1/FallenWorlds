@@ -2,7 +2,7 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "Mouse+Keyboard",
+            "name": "MouseKeyboard",
             "id": "622cd04f-4551-4998-950f-5643917b482a",
             "actions": [
                 {
@@ -262,11 +262,16 @@
     ],
     "controlSchemes": [
         {
-            "name": "Both",
-            "bindingGroup": "Both",
+            "name": "Mouse & Keyboard",
+            "bindingGroup": "Mouse & Keyboard",
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
                     "isOptional": false,
                     "isOR": false
                 }

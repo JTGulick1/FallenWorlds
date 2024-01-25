@@ -5326,7 +5326,7 @@ PrefabInstance:
     - target: {fileID: 173705582952356413, guid: 8798772d1ca51134d93df2896eface37,
         type: 3}
       propertyPath: m_DefaultActionMap
-      value: Mouse+Keyboard
+      value: MouseKeyboard
       objectReference: {fileID: 0}
     - target: {fileID: 173705582952356413, guid: 8798772d1ca51134d93df2896eface37,
         type: 3}

@@ -24,7 +24,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
-            ""name"": ""Mouse+Keyboard"",
+            ""name"": ""MouseKeyboard"",
             ""id"": ""622cd04f-4551-4998-950f-5643917b482a"",
             ""actions"": [
                 {
@@ -284,11 +284,16 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": [
         {
-            ""name"": ""Both"",
-            ""bindingGroup"": ""Both"",
+            ""name"": ""Mouse & Keyboard"",
+            ""bindingGroup"": ""Mouse & Keyboard"",
             ""devices"": [
                 {
                     ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<Mouse>"",
                     ""isOptional"": false,
                     ""isOR"": false
                 }
@@ -296,8 +301,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Mouse+Keyboard
-        m_MouseKeyboard = asset.FindActionMap("Mouse+Keyboard", throwIfNotFound: true);
+        // MouseKeyboard
+        m_MouseKeyboard = asset.FindActionMap("MouseKeyboard", throwIfNotFound: true);
         m_MouseKeyboard_Movement = m_MouseKeyboard.FindAction("Movement", throwIfNotFound: true);
         m_MouseKeyboard_Jump = m_MouseKeyboard.FindAction("Jump", throwIfNotFound: true);
         m_MouseKeyboard_Look = m_MouseKeyboard.FindAction("Look", throwIfNotFound: true);
@@ -366,7 +371,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Mouse+Keyboard
+    // MouseKeyboard
     private readonly InputActionMap m_MouseKeyboard;
     private IMouseKeyboardActions m_MouseKeyboardActionsCallbackInterface;
     private readonly InputAction m_MouseKeyboard_Movement;
@@ -495,13 +500,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     }
     public RemappingActions @Remapping => new RemappingActions(this);
-    private int m_BothSchemeIndex = -1;
-    public InputControlScheme BothScheme
+    private int m_MouseKeyboardSchemeIndex = -1;
+    public InputControlScheme MouseKeyboardScheme
     {
         get
         {
-            if (m_BothSchemeIndex == -1) m_BothSchemeIndex = asset.FindControlSchemeIndex("Both");
-            return asset.controlSchemes[m_BothSchemeIndex];
+            if (m_MouseKeyboardSchemeIndex == -1) m_MouseKeyboardSchemeIndex = asset.FindControlSchemeIndex("Mouse & Keyboard");
+            return asset.controlSchemes[m_MouseKeyboardSchemeIndex];
         }
     }
     public interface IMouseKeyboardActions
