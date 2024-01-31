@@ -73,6 +73,9 @@ public class GameManager : MonoBehaviour
     private int shardsGained;
     private TMPro.TMP_Text gained;
 
+    [Header("Player")]
+    public GameObject player;
+
     private void Awake()
     {
         playerInfoManager = PlayerInfoManager.Instance;
@@ -82,6 +85,7 @@ public class GameManager : MonoBehaviour
         wavenumTXT = GameObject.FindGameObjectWithTag("WaveTXT").GetComponent<Text>();
         endScreen = GameObject.FindGameObjectWithTag("End Screen");
         backpack = GameObject.FindGameObjectWithTag("Player").GetComponent<Backpack>();
+        player = GameObject.FindGameObjectWithTag("Player");
         clipAmmo = GameObject.FindGameObjectWithTag("ClipTXT").GetComponent<Text>();
         spareAmmo = GameObject.FindGameObjectWithTag("SpareTXT").GetComponent<Text>();
         gained = GameObject.FindGameObjectWithTag("GainedTXT").GetComponent<TMPro.TMP_Text>();
@@ -92,10 +96,7 @@ public class GameManager : MonoBehaviour
         inputManager = InputManager.Instance;
         pointstxt.text = "0";
         wavenumTXT.text = waveNumber.ToString();
-        foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Spawner"))
-        {
-            spawners.Add(gameObject);
-        }
+        FindSpawners();
         SpawnWave();
     }
     private void Start()
@@ -165,6 +166,8 @@ public class GameManager : MonoBehaviour
         if (enemysOnFeild == 0)
         {
             spawntimer += Time.deltaTime;
+            spawners.Clear();
+            FindSpawners();
             if (spawntimer >= 3.0f)
             {
                 waveNumber++;
@@ -201,7 +204,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    
 
     #region Helper Functions
     public void SpawnWave()
@@ -416,6 +419,16 @@ public class GameManager : MonoBehaviour
     public void GiveEXP(int exp)
     {
         playerInfoManager.playerEXP += exp;
+    }
+
+    public void FindSpawners()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject tempSpawner = GameObject.FindGameObjectWithTag("Spawner");
+
+            spawners.Add(tempSpawner);
+        }
     }
 
     #endregion;
