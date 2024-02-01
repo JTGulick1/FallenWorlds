@@ -204,13 +204,13 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    
+
 
     #region Helper Functions
     public void SpawnWave()
     {
-         if (spawnNumber >= 33) // max number of bad guys at one time
-         {
+        if (spawnNumber >= 33) // max number of bad guys at one time
+        {
             enemysOnFeild = spawnNumber;
             leftOver = spawnNumber - 33;
             enemysOnFeild -= leftOver;
@@ -423,11 +423,30 @@ public class GameManager : MonoBehaviour
 
     public void FindSpawners()
     {
-        for (int i = 0; i < 3; i++)
+        float first = 99999999;
+        float second = 99999999;
+        float third = 99999999;
+        foreach (GameObject spawner in GameObject.FindGameObjectsWithTag("Spawner"))
         {
-            GameObject tempSpawner = GameObject.FindGameObjectWithTag("Spawner");
+            if (Vector3.Distance(player.transform.position, spawner.transform.position) <= first)
+            {
+                first = Vector3.Distance(player.transform.position, spawner.transform.position);
+                //spawners.RemoveAt(0);
+                spawners.Add(spawner);
+            }
+            else if (Vector3.Distance(player.transform.position, spawner.transform.position) <= second)
+            {
+                second = Vector3.Distance(player.transform.position, spawner.transform.position);
+                //spawners.RemoveAt(1);
+                spawners.Add(spawner);
 
-            spawners.Add(tempSpawner);
+            }
+            else if (Vector3.Distance(player.transform.position, spawner.transform.position) <= third)
+            {
+                third = Vector3.Distance(player.transform.position, spawner.transform.position);
+                //spawners.RemoveAt(2);
+                spawners.Add(spawner);
+            }
         }
     }
 

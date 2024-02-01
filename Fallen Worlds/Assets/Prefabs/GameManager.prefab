@@ -44,15 +44,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 428c3dbf806a71a4c9cf5216b830b692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawners: []
+  spawners:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   baseEnemy: {fileID: 2479331147400074373, guid: aecfe8e09fc26b24ebf610c91c53e9ba,
     type: 3}
+  boss: {fileID: 0}
+  b_spawn: {fileID: 0}
   enemysOnFeild: 0
+  leftOver: 0
   bleedingOut: {fileID: 0}
   items:
-  - {fileID: 11400000, guid: 98ea3a7e846789a4599737bef6c102ed, type: 2}
   - {fileID: 11400000, guid: 3b769ce5af7df0c47adcb694b7c9b32b, type: 2}
+  - {fileID: 11400000, guid: a48c0f8911009684c8df409f74c4851b, type: 2}
+  - {fileID: 11400000, guid: 1833dfe460a80634099560aaf9596ec8, type: 2}
+  - {fileID: 11400000, guid: caf86c9bd55ad9045b74553a27bbace9, type: 2}
   - {fileID: 11400000, guid: 84bc5d82b5960f64e8d718c81b55eafd, type: 2}
-  - {fileID: 11400000, guid: 8bbddaed90607504f8f536166d2e5855, type: 2}
+  - {fileID: 11400000, guid: 98ea3a7e846789a4599737bef6c102ed, type: 2}
   - {fileID: 11400000, guid: d272183d820dd764898e7d490efae714, type: 2}
+  - {fileID: 11400000, guid: e9f1f722f23b78e4aadc06a6d79cca46, type: 2}
+  - {fileID: 11400000, guid: 3d76a581ce49c2247a1940b1dfb3c7ce, type: 2}
+  - {fileID: 11400000, guid: b86b3237cc2e6da44bc7fd2536d0c92a, type: 2}
+  - {fileID: 11400000, guid: 2b28c36c2b57ea34eab3aec3a4b010c9, type: 2}
+  - {fileID: 11400000, guid: b29088decb05bb844bc0907d5a05813b, type: 2}
   item: {fileID: 0}
+  upgradeableSpot: {fileID: 0}
+  player: {fileID: 0}
