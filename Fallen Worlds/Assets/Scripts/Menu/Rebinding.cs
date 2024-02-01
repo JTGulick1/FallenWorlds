@@ -23,7 +23,8 @@ public class Rebinding : MonoBehaviour
         waitingForInputObject.SetActive(true);
 
         playerController.PlayerInput.SwitchCurrentActionMap("Remapping");
-        rebindingOperation = jumpAction.action.PerformInteractiveRebinding().WithControlsExcluding("Mouse").OnMatchWaitForAnother(0.1f).OnComplete(operation => RebindCompleteJump()).Start();
+        rebindingOperation = jumpAction.action.PerformInteractiveRebinding().WithControlsExcluding("Mouse").OnMatchWaitForAnother(0.1f)
+            .WithCancelingThrough("<Keyboard>/escape").OnComplete(operation => RebindCompleteJump()).Start();
     }
 
     private void RebindCompleteJump()
@@ -36,5 +37,6 @@ public class Rebinding : MonoBehaviour
         waitingForInputObject.SetActive(false);
 
         playerController.PlayerInput.SwitchCurrentActionMap("MouseKeyboard");
+        Debug.Log(jumpAction.action);
     }
 }
