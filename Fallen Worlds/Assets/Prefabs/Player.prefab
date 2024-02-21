@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 8341004718693128788}
   - component: {fileID: 173705582952356413}
   - component: {fileID: -8686905623282249440}
-  - component: {fileID: -4818020988494612797}
+  - component: {fileID: -5220485611285846263}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
+  inGamebp: {fileID: 0}
   cap: 20
 --- !u!82 &479806837105817527
 AudioSource:
@@ -402,7 +403,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &-4818020988494612797
+--- !u!114 &-5220485611285846263
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -411,7 +412,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 173705582172475681}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 81d1a6496e83b284fbf6b1299ad18126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 1

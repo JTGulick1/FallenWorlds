@@ -52,63 +52,62 @@ public class PlayerControllerMenu: NetworkBehaviour
 
     void Update()
     {
-        if (!IsOwner)
+        if (!IsOwner) return;
+
+        groundedPlayer = controller.isGrounded;
+        if (groundedPlayer && playerVelocity.y < 0)
         {
-            groundedPlayer = controller.isGrounded;
-            if (groundedPlayer && playerVelocity.y < 0)
-            {
-                playerVelocity.y = 0f;
-            }
-
-            Vector2 movement = inputManager.GetPlayerMovement();
-            Vector3 move = new Vector3(movement.x, 0f, movement.y);
-            move = camTransform.forward * move.z + camTransform.right * move.x;
-            move.y = 0f;
-            controller.Move(move * Time.deltaTime * (playerSpeed + ((playerInfoManager.fileLevel - 1) / 4)));
-
-            // Changes the height position of the player..
-            if (inputManager.Jumped() && groundedPlayer)
-            {
-                playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-            }
-
-            if (inputManager.Sprinting() == true)
-            {
-                playerSpeed = sprintingSpeed;
-            }
-            else
-            {
-                playerSpeed = playerBaseSpeed;
-            }
-            if (inputManager.OpenInventory() == true) // Open inventory if the player pressed tab
-            {
-                if (inventory.activeSelf == true)
-                {
-                    LockC();
-                    cBrain.SetActive(true);
-                    inventory.SetActive(false);
-                    return;
-                }
-                if (inventory.activeSelf == false)
-                {
-                    LockC();
-                    cBrain.SetActive(false);
-                    inventory.SetActive(true);
-                    return;
-                }
-            }
-
-
-            if (inputManager.SettingsMenu() == true)
-            {
-                SettMenu();
-            }
-
-
-            playerVelocity.y += (gravityValue * Time.deltaTime) * 2;
-            controller.Move(playerVelocity * Time.deltaTime);
+            playerVelocity.y = 0f;
         }
-        
+
+        Vector2 movement = inputManager.GetPlayerMovement();
+        Vector3 move = new Vector3(movement.x, 0f, movement.y);
+        move = camTransform.forward * move.z + camTransform.right * move.x;
+        move.y = 0f;
+        controller.Move(move * Time.deltaTime * (playerSpeed + ((playerInfoManager.fileLevel - 1) / 4)));
+
+        // Changes the height position of the player..
+        if (inputManager.Jumped() && groundedPlayer)
+        {
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        }
+
+        if (inputManager.Sprinting() == true)
+        {
+            playerSpeed = sprintingSpeed;
+        }
+        else
+        {
+            playerSpeed = playerBaseSpeed;
+        }
+        if (inputManager.OpenInventory() == true) // Open inventory if the player pressed tab
+        {
+            if (inventory.activeSelf == true)
+            {
+                LockC();
+                cBrain.SetActive(true);
+                inventory.SetActive(false);
+                return;
+            }
+            if (inventory.activeSelf == false)
+            {
+                LockC();
+                cBrain.SetActive(false);
+                inventory.SetActive(true);
+                return;
+            }
+        }
+
+
+        if (inputManager.SettingsMenu() == true)
+        {
+            SettMenu();
+        }
+
+
+        playerVelocity.y += (gravityValue * Time.deltaTime) * 2;
+        controller.Move(playerVelocity * Time.deltaTime);
+
     }
 
 
