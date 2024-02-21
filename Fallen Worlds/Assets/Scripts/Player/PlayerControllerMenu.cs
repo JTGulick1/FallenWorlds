@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.Netcode;
 
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerControllerMenu: MonoBehaviour
+public class PlayerControllerMenu: NetworkBehaviour
 {
     //Simple movement script
 
@@ -25,7 +26,6 @@ public class PlayerControllerMenu: MonoBehaviour
     private bool groundedPlayer;
     public InputManager inputManager;
     private Transform camTransform;
-    private GameManager gameManager;
     private PlayerInfoManager playerInfoManager;
     public GameObject cBrain;
     private GameObject inventory;
@@ -40,7 +40,6 @@ public class PlayerControllerMenu: MonoBehaviour
         controller = GetComponent<CharacterController>();
         inputManager = InputManager.Instance;
         camTransform = Camera.main.transform;
-        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         inventory = GameObject.FindGameObjectWithTag("inGameInv");
         settings = GameObject.FindGameObjectWithTag("inGameSett");
         remap = GameObject.FindGameObjectWithTag("remapCan");
@@ -53,55 +52,63 @@ public class PlayerControllerMenu: MonoBehaviour
 
     void Update()
     {
-
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0){
-            playerVelocity.y = 0f;
-        }
-
-        Vector2 movement = inputManager.GetPlayerMovement();
-        Vector3 move = new Vector3(movement.x, 0f, movement.y);
-        move = camTransform.forward * move.z + camTransform.right * move.x;
-        move.y = 0f;
-        controller.Move(move * Time.deltaTime * (playerSpeed + ((playerInfoManager.fileLevel - 1) / 4)));
-
-        // Changes the height position of the player..
-        if (inputManager.Jumped() && groundedPlayer){
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
-
-        if (inputManager.Sprinting() == true){
-            playerSpeed = sprintingSpeed;
-        }else{
-            playerSpeed = playerBaseSpeed;
-        }
-        if (inputManager.OpenInventory() == true) // Open inventory if the player pressed tab
+        if (!IsOwner)
         {
-            if (inventory.activeSelf == true)
+            groundedPlayer = controller.isGrounded;
+            if (groundedPlayer && playerVelocity.y < 0)
             {
-                LockC();
-                cBrain.SetActive(true);
-                inventory.SetActive(false);
-                return;
+                playerVelocity.y = 0f;
             }
-            if (inventory.activeSelf == false)
+
+            Vector2 movement = inputManager.GetPlayerMovement();
+            Vector3 move = new Vector3(movement.x, 0f, movement.y);
+            move = camTransform.forward * move.z + camTransform.right * move.x;
+            move.y = 0f;
+            controller.Move(move * Time.deltaTime * (playerSpeed + ((playerInfoManager.fileLevel - 1) / 4)));
+
+            // Changes the height position of the player..
+            if (inputManager.Jumped() && groundedPlayer)
             {
-                LockC();
-                cBrain.SetActive(false);
-                inventory.SetActive(true);
-                return;
+                playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             }
+
+            if (inputManager.Sprinting() == true)
+            {
+                playerSpeed = sprintingSpeed;
+            }
+            else
+            {
+                playerSpeed = playerBaseSpeed;
+            }
+            if (inputManager.OpenInventory() == true) // Open inventory if the player pressed tab
+            {
+                if (inventory.activeSelf == true)
+                {
+                    LockC();
+                    cBrain.SetActive(true);
+                    inventory.SetActive(false);
+                    return;
+                }
+                if (inventory.activeSelf == false)
+                {
+                    LockC();
+                    cBrain.SetActive(false);
+                    inventory.SetActive(true);
+                    return;
+                }
+            }
+
+
+            if (inputManager.SettingsMenu() == true)
+            {
+                SettMenu();
+            }
+
+
+            playerVelocity.y += (gravityValue * Time.deltaTime) * 2;
+            controller.Move(playerVelocity * Time.deltaTime);
         }
-
-
-        if (inputManager.SettingsMenu() == true)
-        {
-            SettMenu();
-        }
-
-
-        playerVelocity.y += (gravityValue * Time.deltaTime) * 2;
-        controller.Move(playerVelocity * Time.deltaTime);
+        
     }
 
 

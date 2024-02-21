@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SettingsCanvas : MonoBehaviour
+public class SettingsCanvasMenu : MonoBehaviour
 {
-    public PlayerController gameManager;
+    private PlayerControllerMenu gameManager;
     private AudioSource InGameAudio;
     private AudioSource Music;
     public Slider audioS;
@@ -20,7 +20,7 @@ public class SettingsCanvas : MonoBehaviour
     {
         if (gameManager == null)
         {
-            gameManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            gameManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerMenu>();
             InGameAudio = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
             Music = GameObject.FindGameObjectWithTag("PlayerInfoManager").GetComponent<AudioSource>();
             pOVEXT = GameObject.FindGameObjectWithTag("CamHolder").GetComponent<CinemachinePOVEXT>();

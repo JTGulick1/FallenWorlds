@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a83a7f8e7e054b54cb69bac30e743266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stabbedEnemy: {fileID: 0}
 --- !u!1 &173705582172475681
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,6 +77,8 @@ GameObject:
   - component: {fileID: 479806837105817527}
   - component: {fileID: 8341004718693128788}
   - component: {fileID: 173705582952356413}
+  - component: {fileID: -8686905623282249440}
+  - component: {fileID: -4818020988494612797}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -143,6 +146,7 @@ MonoBehaviour:
   inputManager: {fileID: 0}
   cBrain: {fileID: 8821758960451240716}
   meleeBall: {fileID: 368530067}
+  meleeReset: 0
 --- !u!114 &173705582172475685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,6 +386,48 @@ MonoBehaviour:
   m_DefaultActionMap: MouseKeyboard
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &-8686905623282249440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173705582172475681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &-4818020988494612797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173705582172475681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  InLocalSpace: 0
+  Interpolate: 1
 --- !u!1 &173705582807903665
 GameObject:
   m_ObjectHideFlags: 0

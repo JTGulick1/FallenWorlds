@@ -8,7 +8,7 @@ public class Backpack : MonoBehaviour
 
     public List<Item> items = new List<Item>();
 
-    private InGameInv inGamebp;
+    public InGameInv inGamebp;
 
     public int cap = 20;
 
