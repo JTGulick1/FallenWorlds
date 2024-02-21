@@ -25,6 +25,7 @@ TagManager:
   - CamHolder
   - remapCan
   - Melee
+  - ingameOverlay
   layers:
   - Default
   - TransparentFX

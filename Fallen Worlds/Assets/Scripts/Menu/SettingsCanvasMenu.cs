@@ -13,17 +13,18 @@ public class SettingsCanvasMenu : MonoBehaviour
     public Slider musicS;
     public Slider Vsen;
     public Slider Hsen;
-    private CinemachinePOVEXT pOVEXT;
+    public CinemachinePOVEXT pOVEXT;
     public GameObject remappingCanvas;
 
     private void Update()
     {
-        if (gameManager == null)
+        if (GameObject.FindGameObjectWithTag("Player"))
         {
+            Debug.Log("found Player");
             gameManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerMenu>();
             InGameAudio = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
             Music = GameObject.FindGameObjectWithTag("PlayerInfoManager").GetComponent<AudioSource>();
-            pOVEXT = GameObject.FindGameObjectWithTag("CamHolder").GetComponent<CinemachinePOVEXT>();
+            pOVEXT = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<CinemachinePOVEXT>();
         }
         InGameAudio.volume = audioS.value;
         Music.volume = musicS.value;

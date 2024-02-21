@@ -28,7 +28,7 @@ public class PlayerControllerMenu: NetworkBehaviour
     private Transform camTransform;
     private PlayerInfoManager playerInfoManager;
     public GameObject cBrain;
-    private GameObject inventory;
+    public GameObject inventory;
     private GameObject settings;
     private GameObject remap;
     private bool curBool = true;
@@ -40,7 +40,7 @@ public class PlayerControllerMenu: NetworkBehaviour
         controller = GetComponent<CharacterController>();
         inputManager = InputManager.Instance;
         camTransform = Camera.main.transform;
-        inventory = GameObject.FindGameObjectWithTag("inGameInv");
+        inventory = GameObject.FindGameObjectWithTag("ingameOverlay");
         settings = GameObject.FindGameObjectWithTag("inGameSett");
         remap = GameObject.FindGameObjectWithTag("remapCan");
         inventory.SetActive(false);
