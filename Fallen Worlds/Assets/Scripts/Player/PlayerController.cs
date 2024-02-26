@@ -53,7 +53,7 @@ public class PlayerController: NetworkBehaviour
         camTransform = Camera.main.transform;
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         GC = GetComponent<GunController>();
-        inventory = GameObject.FindGameObjectWithTag("inGameInv");
+        inventory = GameObject.FindGameObjectWithTag("ingameOverlay");
         settings = GameObject.FindGameObjectWithTag("inGameSett");
         remap = GameObject.FindGameObjectWithTag("remapCan");
         inventory.SetActive(false);

@@ -673,6 +673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db3595a2810f0004eb5096cf83b052c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   audioS: {fileID: 313681710}
   musicS: {fileID: 2041294549}
   Vsen: {fileID: 584475982}
@@ -2008,7 +2009,7 @@ GameObject:
   - component: {fileID: 584219419}
   m_Layer: 3
   m_Name: InGameInventoryBG
-  m_TagString: inGameInv
+  m_TagString: ingameOverlay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
