@@ -5326,22 +5326,22 @@ PrefabInstance:
     - target: {fileID: 173705582172475681, guid: 8798772d1ca51134d93df2896eface37,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8821758958844810516, guid: 8798772d1ca51134d93df2896eface37,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.6681824
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8821758958844810516, guid: 8798772d1ca51134d93df2896eface37,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8809999
+      value: 0.60300004
       objectReference: {fileID: 0}
     - target: {fileID: 8821758958844810516, guid: 8798772d1ca51134d93df2896eface37,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.81284475
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8798772d1ca51134d93df2896eface37, type: 3}

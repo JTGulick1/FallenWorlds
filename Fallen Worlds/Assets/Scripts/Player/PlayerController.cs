@@ -66,7 +66,7 @@ public class PlayerController: NetworkBehaviour
 
     void Update()
     {
-        if (!IsOwner) return;
+        //if (!IsOwner) return;
 
         if (playersHealth <= 0.0f)
         {

@@ -15,16 +15,16 @@ public class SettingsCanvas : MonoBehaviour
     public Slider Hsen;
     private CinemachinePOVEXT pOVEXT;
     public GameObject remappingCanvas;
+    private void Start()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        InGameAudio = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
+        Music = GameObject.FindGameObjectWithTag("PlayerInfoManager").GetComponent<AudioSource>();
+        pOVEXT = GameObject.FindGameObjectWithTag("CamHolder").GetComponent<CinemachinePOVEXT>();
+    }
 
     private void Update()
     {
-        if (gameManager == null)
-        {
-            gameManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-            InGameAudio = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
-            Music = GameObject.FindGameObjectWithTag("PlayerInfoManager").GetComponent<AudioSource>();
-            pOVEXT = GameObject.FindGameObjectWithTag("CamHolder").GetComponent<CinemachinePOVEXT>();
-        }
         InGameAudio.volume = audioS.value;
         Music.volume = musicS.value;
         pOVEXT.verticalSpeed = Vsen.value * 100;
