@@ -15,7 +15,7 @@ public class Backpack : MonoBehaviour
     private void Start()
     {
         playerInfoManager = PlayerInfoManager.Instance;
-        //inGamebp = GameObject.FindGameObjectWithTag("inGameInv").GetComponent<InGameInv>();
+        inGamebp = GameObject.FindGameObjectWithTag("inGameInv").GetComponent<InGameInv>();
         playerInfoManager.MoveToInGameBackPack(items);
         inGamebp.UpdateINV();
     }
